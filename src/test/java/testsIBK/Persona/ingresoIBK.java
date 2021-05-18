@@ -1,22 +1,7 @@
 package testsIBK.Persona;
-import common.loginPersonaIBK;
-
-
-import org.junit.*;
 //import org.junit.jupiter.api.Assertions;
 //import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
-
+/*
 public class ingresoIBK extends loginPersonaIBK{
     public static WebDriver driver;
 
@@ -30,7 +15,7 @@ public class ingresoIBK extends loginPersonaIBK{
     }
 
     }
-
+*/
 /*
     public static WebDriver driver;
 

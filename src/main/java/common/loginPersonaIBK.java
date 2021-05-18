@@ -1,25 +1,33 @@
 package common;
 
-import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import util.Utilities;
 
 import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
 
 public class loginPersonaIBK {
 
-    public static WebDriver driver;
+public static WebDriver driver;
 
-   @Before
-// public void iniciarDriver(){ }
-     public void loginPersonaIBK() throws Exception{
+public loginPersonaIBK (WebDriver driver){
+    this.driver= driver;
+}
+
+private By tipotarjeta= By.id("panel-steps:login-card-select");
+private By numerotarjeta = By.xpath("//*[@id='panel-steps:login-card-number']");
+
+    Utilities utilities = new Utilities();
+    //@Before
+     public void loginPersonaIBK() { // throws InterruptedException
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
+
         driver.get("http://10.0.202.9:8080/internetbanking/");
 
         String originalWindows = driver.getWindowHandle();  //Almacena id de ventana original
@@ -37,19 +45,20 @@ public class loginPersonaIBK {
                 driver.findElement(By.name("j_idt14:j_idt30")).click(); //lleva a otra url dentro de la ventana hija
                 driver.navigate().to("http://10.0.202.9:8080/internetbanking/ibk/personas.do#no-back-button");
 
-                Thread.sleep(5000);
-
                 //Paso 1
                 //Seleccionando combo
-                Select tarjeta = new Select(driver.findElement(By.id("panel-steps:login-card-select")));
+                Select tarjeta = new Select(driver.findElement(tipotarjeta));
                 tarjeta.selectByValue("4");
 
-                Thread.sleep(5000);
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
                 //Llenando campo tarjeta
-                WebElement numTarjetaCargada = driver.findElement(By.xpath("//*[@id='panel-steps:login-card-number']"));
+                WebElement numTarjetaCargada = driver.findElement(numerotarjeta);
                 numTarjetaCargada.sendKeys("16466306");
-
 
                 //Paso 2
                 driver.findElement(By.xpath("//*[@id='key-4']")).click();
@@ -72,6 +81,7 @@ public class loginPersonaIBK {
 
 
             }
+
         }
 
 
