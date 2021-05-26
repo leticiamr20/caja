@@ -6,12 +6,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 import util.Utilities;
 
 import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
 
 public class loginPersonaIBK {
+
+    Screen screen = new Screen();
+    Pattern pattern;
 
 public static WebDriver driver;
 
@@ -23,12 +29,16 @@ private By tipotarjeta= By.id("panel-steps:login-card-select");
 private By numerotarjeta = By.xpath("//*[@id='panel-steps:login-card-number']");
 
     Utilities utilities = new Utilities();
-    //@Before
-     public void loginPersonaIBK() { // throws InterruptedException
+
+    public loginPersonaIBK() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
 
         driver.get("http://10.0.202.9:8080/internetbanking/");
+
+    }
+
+    public void  loginPersonaIBK_usuario1() {
 
         String originalWindows = driver.getWindowHandle();  //Almacena id de ventana original
         assert driver.getWindowHandles().size()==1; //comprueba que no existen otras ventanas desplegadas
@@ -61,19 +71,20 @@ private By numerotarjeta = By.xpath("//*[@id='panel-steps:login-card-number']");
                 numTarjetaCargada.sendKeys("16466306");
 
                 //Paso 2
-                driver.findElement(By.xpath("//*[@id='key-4']")).click();
-                driver.findElement(By.xpath("//*[@id='key-4']")).click();
-                driver.findElement(By.xpath("//*[@id='key-4']")).click();
-                driver.findElement(By.xpath("//*[@id='key-4']")).click();
-                driver.findElement(By.xpath("//*[@id='key-4']")).click();
-                driver.findElement(By.xpath("//*[@id='key-4']")).click();
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ingresarclavelogin();
 
                 //Paso 3
                 //Captcha esta en true en ambiente de pruebas
 
-                //ingreamos al app haciendo clic en el botón ingresar
+                //Ingreamos al app haciendo clic en el botón ingresar
                 driver.findElement(By.name("panel-steps:j_idt88")).click();
 
+                //validaciones
                 String nombreCliente = driver.findElement(By.xpath("//*[@id='j_idt11']/div[2]/div[1]/div[2]/div/span[2]")).getText();
                 String nombreClienteEsperado= "ANGEL ALEJO ALVITES";
                 assertEquals(nombreCliente,nombreClienteEsperado);
@@ -88,5 +99,31 @@ private By numerotarjeta = By.xpath("//*[@id='panel-steps:login-card-number']");
 
     }
 
+    public void ingresarclavelogin(){
+
+        Screen screen = new Screen();
+        Pattern pattern;
+        pattern= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\Caja\\src\\main\\resources\\imagenes\\tecla1.PNG");
+
+        try {
+            screen.click(pattern);
+            screen.click(pattern);
+            screen.click(pattern);
+            screen.click(pattern);
+            screen.click(pattern);
+            screen.click(pattern);
+        } catch (FindFailed findFailed) {
+            findFailed.printStackTrace();
+        }
+
+    }
 
 }
+
+
+
+
+
+    //@Before
+     //public void loginPersonaIBK() { // throws InterruptedException
+      //}

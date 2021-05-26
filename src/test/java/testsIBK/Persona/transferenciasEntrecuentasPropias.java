@@ -48,7 +48,7 @@ public class transferenciasEntrecuentasPropias extends BaseDriver {
 
     @Test
     public void transferenciasEntrecuentasPropias() { //throws Exception
-        loginPersonaIBK.loginPersonaIBK();
+        loginPersonaIBK.loginPersonaIBK_usuario1();
 
         WebElement selecionarMenuOperaciones = loginPersonaIBK.driver.findElement(clickMenuOperaciones);
         selecionarMenuOperaciones.click();
@@ -76,7 +76,6 @@ public class transferenciasEntrecuentasPropias extends BaseDriver {
 
         //PASO 1
         //seleccionar cuenta origen
-        //WebElement seleccionar_CuentaOrigen = loginPersonaIBK.driver.findElement(cuentaOrigen);
         Select seleccionarCuentaOrigen = new Select(loginPersonaIBK.driver.findElement(cuentaOrigen));
         seleccionarCuentaOrigen.selectByValue("430-01-0436982");
 
