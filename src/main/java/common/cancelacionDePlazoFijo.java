@@ -92,6 +92,9 @@ public class cancelacionDePlazoFijo {
     private String numeroOperacionObtenidoPaso3;
     private String fechaDePresentacionObtenidoPaso3;
 
+    String monedaSoles= "S/";
+    String monedaDolares= "US$";
+
     private By modalEnviarConstancia = By.xpath("//*[@id='enviarDEU01']/div/div");
     private By seleccionarEnviarConstancia= By.xpath("//*[@id='j_idt158']");
     private By tituloModalEnviarConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[1]/h5");
@@ -99,6 +102,8 @@ public class cancelacionDePlazoFijo {
     private By emailPara =  By.xpath("//*[@id='txtEmailPara']");
     private By emailasunto =  By.xpath("//*[@id='txtEmailAsunto']");
     private By constanciaNumeroDeReferencia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[1]/span[2]");
+
+    //form[@id='frmEnvio']//div[@id='enviarDEU01']//div[@class='modal-dialog']//div[@class='modal-content']
     //*[@id="enviarDEU01"]/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[1]/span[2]
     private By constanciaNumeroDeOperacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[2]/span[2]");
     private By constanciaFechaDePresentacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[3]/span[2]");
@@ -208,10 +213,17 @@ public class cancelacionDePlazoFijo {
 
         //Importe de documentos
         String validarImporteDeDocumentoPaso2= loginPersonaIBK.driver.findElement(importeDeDocumentosPaso2).getText();
-        importeDeDocumentoObtenidoPaso2= validarImporteDeDocumentoPaso2;
-        String importeDeDocumentoEsperadoPaso2= "S/ 100.00";
-        assertEquals(importeDeDocumentoEsperadoPaso2, importeDeDocumentoObtenidoPaso2);
-        System.out.println("Importe de documento ok en paso 2");
+
+
+        if(validarImporteDeDocumentoPaso2.contains(monedaSoles)){
+            importeDeDocumentoObtenidoPaso2=validarImporteDeDocumentoPaso2;
+            System.out.println("Importe de documento obtenido en paso 2: "+importeDeDocumentoObtenidoPaso2);
+
+        } else if (validarImporteDeDocumentoPaso2.contains(monedaDolares)){
+            importeDeDocumentoObtenidoPaso2=validarImporteDeDocumentoPaso2;
+            System.out.println("Importe de documento obtenido en paso 2: "+importeDeDocumentoObtenidoPaso2);
+
+        }
 
         //Interés calculado a la tasa vigente positivo
         String validarInteresCalculadoAlaTasaVigentePositivoPaso2= loginPersonaIBK.driver.findElement(interesCalculadoAlaTasaVigentePositivoPaso2).getText();
@@ -239,17 +251,34 @@ public class cancelacionDePlazoFijo {
 
         //Monto de cancelación
         String validarMontoCancelacionPaso2= loginPersonaIBK.driver.findElement(montoDeCancelacionPaso2).getText();
-        montoDeCancelacionObtenidoPaso2= validarMontoCancelacionPaso2;
-        String montoDeCancelacionEsperadoPaso2= "S/ 100.00";
-        assertEquals(montoDeCancelacionEsperadoPaso2, montoDeCancelacionObtenidoPaso2);
-        System.out.println("Monto de cancelaciòn ok en paso 2");
+
+        if(validarMontoCancelacionPaso2.contains(monedaSoles)){
+            montoDeCancelacionObtenidoPaso2=validarMontoCancelacionPaso2;
+            System.out.println("Monto de cancelación obtenido en paso 2: "+montoDeCancelacionObtenidoPaso2);
+
+        } else if (validarMontoCancelacionPaso2.contains(monedaDolares)){
+            montoDeCancelacionObtenidoPaso2=validarMontoCancelacionPaso2;
+            System.out.println("Monto de cancelación obtenido en paso 2: "+montoDeCancelacionObtenidoPaso2);
+
+        }
 
         //ITF
         String validarItfPaso2= loginPersonaIBK.driver.findElement(ITFPaso2).getText();
-        itfobtenidoPaso2= validarItfPaso2;
-        String itfEsperadoPaso2= "S/ 0.00";
-        assertEquals(itfEsperadoPaso2, itfobtenidoPaso2);
-        System.out.println("ITF ok en paso 2");
+        //itfobtenidoPaso2= validarItfPaso2;
+        //String itfEsperadoPaso2= "S/ 0.00";
+        //assertEquals(itfEsperadoPaso2, itfobtenidoPaso2);
+        //System.out.println("ITF ok en paso 2");
+
+        if(validarItfPaso2.contains(monedaSoles)){
+            itfobtenidoPaso2=validarItfPaso2;
+            System.out.println("ITF obtenido en paso 2: "+itfobtenidoPaso2);
+            assertNotNull(itfobtenidoPaso2);
+
+        } else if (validarItfPaso2.contains(monedaDolares)){
+            itfobtenidoPaso2=validarItfPaso2;
+            System.out.println("ITF obtenido en paso 2: "+itfobtenidoPaso2);
+            assertNotNull(itfobtenidoPaso2);
+        }
     }
     public void validarDatosDeDatosDelAbonoPaso2(){
         //Validación de datos del abono
@@ -265,10 +294,17 @@ public class cancelacionDePlazoFijo {
 
         //Monto a transferir
         String validarMontoaTransferirPaso2= loginPersonaIBK.driver.findElement(montoAtransferirPaso2).getText();
-        montoAtransferirObtenidoPaso2= validarMontoaTransferirPaso2;
-        String montoAtransferirEsperadoPaso2= "S/ 100.00";
-        assertEquals(montoAtransferirEsperadoPaso2, montoAtransferirObtenidoPaso2);
-        System.out.println("Monto a transferir ok en paso 2");
+
+        if(validarMontoaTransferirPaso2.contains(monedaSoles)){
+            montoAtransferirObtenidoPaso2= validarMontoaTransferirPaso2;
+            System.out.println("Monto a transferir obtenido en paso 2: "+montoAtransferirObtenidoPaso2);
+            assertNotNull(itfobtenidoPaso2);
+
+        } else if (validarMontoaTransferirPaso2.contains(monedaDolares)){
+            montoAtransferirObtenidoPaso2= validarMontoaTransferirPaso2;
+            System.out.println("Monto a transferir obtenido en paso 2: "+montoAtransferirObtenidoPaso2);
+            assertNotNull(itfobtenidoPaso2);
+        }
     }
     public void completarPaso2De3ConFondo() {
 
@@ -365,7 +401,7 @@ public class cancelacionDePlazoFijo {
 
 
     }
-    public void validarFuncionEnviarConstancia(String correo, String asunto){
+    public void funcionEnviarConstancia(String correo, String asunto){
         WebElement seleccionarEmailPara= loginPersonaIBK.driver.findElement(emailPara);
         seleccionarEmailPara.sendKeys(correo);
 
@@ -380,10 +416,14 @@ public class cancelacionDePlazoFijo {
         WebElement EnviarConstancia = loginPersonaIBK.driver.findElement(seleccionarEnviarConstancia);
         EnviarConstancia.click();
 
-        Actions action = new Actions(loginPersonaIBK.driver);
-        WebElement moverAModal = loginPersonaIBK.driver.findElement(tituloModalEnviarConstancia);
-        action.moveToElement(moverAModal).build().perform();
-
+        //Actions action = new Actions(loginPersonaIBK.driver);
+        //WebElement moverAModal = loginPersonaIBK.driver.findElement(By.xpath("//form[@id='frmEnvio']//div[@id='enviarDEU01']//div[@class='modal-dialog']//div[@class='modal-content']"));
+        //action.moveToElement(moverAModal).build().perform();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String numeroReferenciaConstancia= loginPersonaIBK.driver.findElement(constanciaNumeroDeReferencia).getText();
         String numeroReferenciaObtenidoConstancia= numeroReferenciaConstancia;
         assertEquals(numeroReferenciaObtenidoPaso3,numeroReferenciaObtenidoConstancia);
@@ -402,7 +442,7 @@ public class cancelacionDePlazoFijo {
         assertEquals(importeDeDocumentoObtenidoPaso2,importeDeDocumentoObtenidoConstancia);
 
         String interesPositivoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaInteresCalculadoAlaTasaVigentePositivo).getText();
-        assertEquals(interesNegativoObtenidoPaso2,interesPositivoObtenidoConstancia);
+        assertEquals(interesPositivoObtenidoPaso2,interesPositivoObtenidoConstancia);
 
         String interesAntesDePlazoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaInteresPorCancelacionAntesDePlazo).getText();
         assertEquals(interesXcancelacionAntesDePlazoObtenidoPaso2,interesAntesDePlazoObtenidoConstancia);
@@ -422,6 +462,25 @@ public class cancelacionDePlazoFijo {
 
         String montoTransferidoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaMontoTransferido).getText();
         assertEquals(montoAtransferirObtenidoPaso2,montoTransferidoObtenidoConstancia);
+    }
+    public void confirmacionDeEnvioDeConstancia(){
+
+
+        String tituloConfirmacionObtenido = loginPersonaIBK.driver.findElement(By.xpath("//*[@id='dlgConfirmacion']/div[2]/h2")).getText();
+        String tituloConfirmacionEsperado= "CONFIRMACIÓN";
+        assertEquals(tituloConfirmacionEsperado,tituloConfirmacionObtenido);
+
+        String mensajeConfirmacionObtenido = loginPersonaIBK.driver.findElement(By.xpath("//*[@id='j_idt128']")).getText();
+        String mensajeConfirmacionEsperado= "La constancia fue enviada con éxito";
+        assertEquals(mensajeConfirmacionEsperado,mensajeConfirmacionObtenido);
+
+        String botonAceptarObtenido = loginPersonaIBK.driver.findElement(By.xpath("//*[@id='dlgConfirmacion']/div[2]/input")).getAttribute("value");
+        String botonAceptarEsperado= "Aceptar";
+        assertEquals(botonAceptarEsperado,botonAceptarObtenido);
+
+        WebElement botonAceptar= loginPersonaIBK.driver.findElement(By.xpath("//*[@id='dlgConfirmacion']/div[2]/input"));
+        botonAceptar.click();
+
     }
 
 
