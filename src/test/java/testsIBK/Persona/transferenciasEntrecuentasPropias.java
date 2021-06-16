@@ -48,7 +48,7 @@ public class transferenciasEntrecuentasPropias extends BaseDriver {
 
     @Test
     public void transferenciasEntrecuentasPropias() { //throws Exception
-        loginPersonaIBK.loginPersonaIBK_usuario1();
+        //loginPersonaIBK.loginPersonaIBK_usuario1();
 
         WebElement selecionarMenuOperaciones = loginPersonaIBK.driver.findElement(clickMenuOperaciones);
         selecionarMenuOperaciones.click();
