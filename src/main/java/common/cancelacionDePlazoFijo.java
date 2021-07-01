@@ -1,19 +1,17 @@
 package common;
 
-import org.apache.commons.io.FileUtils;
+
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 import util.Utilities;
 
-import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -47,6 +45,7 @@ public class cancelacionDePlazoFijo {
     //PASO 2
     //Confirmar cancelacion - clave
     private By cuentaAcancelarPaso2= By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[1]/p");
+    private By cuentaAcancelarEnceroPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div/p");
     private By importeDeDocumentosPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[2]/p");
     private By interesCalculadoAlaTasaVigentePositivoPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[3]/p");
     private By toolTipPaso2= By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[3]/label/i");
@@ -70,6 +69,15 @@ public class cancelacionDePlazoFijo {
     private By numeroReferenciaPaso3= By.xpath("//*[@id='operacion']/div[3]/div[1]/p[2]");
     private By numeroOperacionPaso3 = By.xpath("//*[@id='operacion']/div[3]/div[2]/p[2]");
     private By fechaPresentacionPaso3 = By.xpath("//*[@id='fechapresentacion']");
+
+    //locatos cuenta sin fondo
+    private By numeroReferencia_Paso3= By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[1]/p[2]");
+    private By numeroOperacion_Paso3= By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[2]/p[2]");
+    private By fechaPresentacion_Paso3= By.xpath("//*[@id='fechapresentacion']");
+
+    private By cuentaCanceladaEnceroPaso3 = By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[4]/p");
+    //
+
     //Datos de cancelación
     private By cuentaCanceladaPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[1]/p");
     private By importedocumentoPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[2]/p");
@@ -88,6 +96,7 @@ public class cancelacionDePlazoFijo {
     private By montoEquivalente= By.xpath("//*[@id='idDatosAbonoFirstLine']/span[2]/p");
 
     //Datos a validar en el paso 2
+    private String cuentaACancelarObtenido_Paso2;
     private String cuentaACancelarObtenidoPaso2;
     private String importeDeDocumentoObtenidoPaso2;
     private String interesPositivoObtenidoPaso2;
@@ -108,6 +117,13 @@ public class cancelacionDePlazoFijo {
     private String tipoDeCambioObtenidoPaso3;
     private String montoEquivalenteObtenidoPaso3;
     private String montoAtransferirmultimonedaObtenidoPaso3;
+
+
+    private String cuentaSeleccionadaPaso1;
+
+
+    private String cuentaACancelarEnCeroObtenidoPaso2;
+    private String cuentaCanceladaEnCeroObtenidoPaso3;
 
     String monedaSoles= "S/";
     String monedaDolares= "US$";
@@ -131,12 +147,9 @@ public class cancelacionDePlazoFijo {
     private By constanciaITF= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[3]/td/span[2]");
     private By constanciaCuentaDestino= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[1]/span[2]");
     private By constanciaMontoTransferido= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[2]/span");
-    //*[@id="enviarDEU01"]/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[2]/span
     private By constanciaBotonEnviar = By.xpath("//*[@id='j_idt293']");
     private By constanciaEtiquetaTipoCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[2]/span[1]");
-    //*[@id="enviarDEU01"]/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[2]/label
     private By constanciaTipoDeCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[2]/span[2]");
-    //*[@id="enviarDEU01"]/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[2]/span
     private By constanciaMontoEquivalente= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[3]/span[2]");
     private By constanciaMontoTransferidoMultimoneda= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[2]/td/span");
 
@@ -146,6 +159,9 @@ public class cancelacionDePlazoFijo {
     private By menuConsultas= By.xpath("//*[@id='j_idt74:0:j_idt76']");
     private By saldosYmovimientos= By.xpath("//*[@id='j_idt74:0:j_idt81:0:j_idt83']");
     private By pdf= By.id("pdf-viewer");
+    private By tablaCuentas= By.xpath("//div[@id='DataTables_Table_1_wrapper']//tbody//tr[@class='odd']/td[@data-label='Nº cuenta']//p");
+    private By accesoDirectoCancelarCuenta= By.xpath("//*[@id='botonNext']");
+
 
     public void loginUsuarioCancelacion3pasos() {
         LoginPersonaIBK.loginPersonaIBK_usuario1("4", "16466306");
@@ -166,7 +182,8 @@ public class cancelacionDePlazoFijo {
         action2.moveToElement(ingresarAcancelacionAbonoACuentaPropia).perform();
         ingresarAcancelacionAbonoACuentaPropia.click();
     }
-    public void ingresarAconsultaDeCuenta(){
+    public void ingresarACancelacionDePlazoFijoDesdeAccesoDirecto(String cuentaSeleccionada){
+        cuentaSeleccionadaPaso1= cuentaSeleccionada;
         Actions action = new Actions(loginPersonaIBK.driver);
         WebElement selecionarMenuConsultas = loginPersonaIBK.driver.findElement(menuConsultas);
         action.moveToElement(selecionarMenuConsultas).perform();
@@ -175,6 +192,27 @@ public class cancelacionDePlazoFijo {
         WebElement ingresarAsaldosYmovimientos = loginPersonaIBK.driver.findElement(saldosYmovimientos);
         action1.moveToElement(ingresarAsaldosYmovimientos).perform();
         ingresarAsaldosYmovimientos.click();
+
+        By etiquetaPazoFijo= By.xpath("//*[@id='demo']/div[10]/h5");
+
+        WebDriverWait wait = new WebDriverWait (loginPersonaIBK.driver,5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(etiquetaPazoFijo));
+
+        By filaCuenta = By.xpath("//*[@id='DataTables_Table_1']//tr[@class='odd']/td[@data-label='Nº cuenta']//p[contains(text(),'"+cuentaSeleccionada+"')]/../../../td[@data-label='Detalle']//a");
+
+        Actions seleccionarFila = new Actions(loginPersonaIBK.driver);
+        WebElement Cuenta= loginPersonaIBK.driver.findElement(filaCuenta);
+        seleccionarFila.moveToElement(Cuenta).build().perform();
+        Cuenta.click();
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement botonAccesoDirecto = loginPersonaIBK.driver.findElement(accesoDirectoCancelarCuenta);
+        botonAccesoDirecto.click();
     }
     public void validarCaracterisicasDeFormularioCargadoPaso1() {
         String validartituloFormularioPaso1= loginPersonaIBK.driver.findElement(tituloformulario).getText();
@@ -207,21 +245,62 @@ public class cancelacionDePlazoFijo {
                 "(PASO 1 DE 3)";
         assertEquals(seccionTituloFormularioEsperado, validarTituloFormulario);
         System.out.println("Titulo formulario ok");
+    }
+    public void seleccionarTipoTransferenciaDesdeModal(){
+        //Validando datos del modal
+        By tituloModalTipoTransferencia= By.xpath("//*[@id='dlgOpcionesCancelacion']/div/div/div/div[1]/h5");
+        String  tituloModal_tipoTransferencia = loginPersonaIBK.driver.findElement(tituloModalTipoTransferencia).getText();
+        String tituloModalESperado_tipoTransferencia= "CANCELACIÓN DE PLAZO FIJO";
+        assertEquals(tituloModalESperado_tipoTransferencia,tituloModal_tipoTransferencia);
 
-        String validarPaso1= loginPersonaIBK.driver.findElement(paso1De3).getText();
-        String seccionPaso1Esperado="(PASO 1 DE 3)";
-        assertEquals(seccionPaso1Esperado, validarPaso1);
-        System.out.println("Paso 1 ok");
+        By subTituloModalTipoTransferencia= By.xpath("//*[@id='dlgOpcionesCancelacion']/div/div/div/div[2]/div[1]");
+        String subTituloModal_tipoTransferencia = loginPersonaIBK.driver.findElement(subTituloModalTipoTransferencia).getText();
+        String subTituloModalEsperado_tipoTransferencia= "Transfiere tus fondos:";
+        assertEquals(subTituloModalEsperado_tipoTransferencia,subTituloModal_tipoTransferencia);
+
+        By chekBox_ConAbonoAcuentaPropia= By.xpath("//*[@id='tableMTN:0:chkSeleccionLabel']");
+        WebElement ConAbonoAcuentaPropia = loginPersonaIBK.driver.findElement(chekBox_ConAbonoAcuentaPropia);
+        String ConAbonoAcuentaPropia_tipoTRansferencia = ConAbonoAcuentaPropia.getText();
+        String ConAbonoAcuentaPropiaEsperado= "Con abono a cuenta propia";
+        assertEquals(ConAbonoAcuentaPropiaEsperado,ConAbonoAcuentaPropia_tipoTRansferencia);
+        ConAbonoAcuentaPropia.click();
+
+        By botonSiguienteModalTipoTransferencia= By.xpath("//*[@id='btn-next']");
+
+        WebDriverWait wait = new WebDriverWait(loginPersonaIBK.driver,5);
+        wait.until(ExpectedConditions.elementToBeClickable(botonSiguienteModalTipoTransferencia));
+
+
+        WebElement botonSiguienteModal_tipoTransferencia= loginPersonaIBK.driver.findElement(botonSiguienteModalTipoTransferencia);
+        botonSiguienteModal_tipoTransferencia.click();
+
+
+
+    }
+    public void completarPaso1De3desdeAccesoDirecto(String cuenta_destino){
+        //validar cuenta origen
+        String cuentaOrigen = loginPersonaIBK.driver.findElement(cuentaAcancelar).getText();
+        if (cuentaOrigen.contains(cuentaSeleccionadaPaso1)){
+            //seleccionar cuenta destino
+            Select seleccionarCuentaDestino = new Select(loginPersonaIBK.driver.findElement(cuentaDestino));
+            seleccionarCuentaDestino.selectByValue(cuenta_destino);
+
+            //Clic botòn siguiente
+            WebElement clicBotonSiguientePaso1= loginPersonaIBK.driver.findElement(siguientePaso1);
+            clicBotonSiguientePaso1.click();
+
+        }
 
     }
     public void completarPaso1De3ConFondo(String cuenta_a_cancelar, String cuenta_destino) {
+        cuentaSeleccionadaPaso1 = cuenta_a_cancelar;
         //seleccionar cuenta origen
         Select seleccionarCuentaOrigen = new Select(loginPersonaIBK.driver.findElement(cuentaAcancelar));
-        seleccionarCuentaOrigen.selectByValue(cuenta_a_cancelar); //Actualizar en cada ejeución 310019981212
+        seleccionarCuentaOrigen.selectByValue(cuenta_a_cancelar);
 
         //seleccionar cuenta destino
         Select seleccionarCuentaDestino = new Select(loginPersonaIBK.driver.findElement(cuentaDestino));
-        seleccionarCuentaDestino.selectByValue(cuenta_destino); //No actualizar, esta cuenta es una cuenta destino soles 210010021742
+        seleccionarCuentaDestino.selectByValue(cuenta_destino);
 
         //Clic botòn siguiente
         WebElement clicBotonSiguientePaso1= loginPersonaIBK.driver.findElement(siguientePaso1);
@@ -238,11 +317,10 @@ public class cancelacionDePlazoFijo {
     }
     public void validarDatosDeCancelacionPaso2(){
         //Cuenta a cancelar
-        String validarCuentaAcancelarPaso2= loginPersonaIBK.driver.findElement(cuentaAcancelarPaso2).getText();
-        cuentaACancelarObtenidoPaso2= validarCuentaAcancelarPaso2;
-        String parte1CuentaAcancelar= validarCuentaAcancelarPaso2.substring(7,10);
-        String parte2CuentaAcancelar = validarCuentaAcancelarPaso2.substring(11,13);;
-        String parte3CuentaAcancelar = validarCuentaAcancelarPaso2.substring(14,21);;
+        cuentaACancelarObtenidoPaso2= loginPersonaIBK.driver.findElement(cuentaAcancelarPaso2).getText();
+        String parte1CuentaAcancelar= cuentaSeleccionadaPaso1.substring(0,3);
+        String parte2CuentaAcancelar = cuentaSeleccionadaPaso1.substring(4,6);
+        String parte3CuentaAcancelar = cuentaSeleccionadaPaso1.substring(7,14);
         String cuentaACancelarEsperadaPaso2 = "Cuenta "+parte1CuentaAcancelar+"-"+parte2CuentaAcancelar+"-"+parte3CuentaAcancelar;
         assertEquals(cuentaACancelarEsperadaPaso2, cuentaACancelarObtenidoPaso2);
         System.out.println("Cuenta a cancelar ok en paso 2");
@@ -374,7 +452,7 @@ public class cancelacionDePlazoFijo {
             }
         }
     }
-    public void completarPaso2De3ConFondo() {
+    public void completarPaso2De3() {
 
         Actions action = new Actions(loginPersonaIBK.driver);
         WebElement moverAbotonConfirmar = loginPersonaIBK.driver.findElement(By.xpath("//*[@id='generate-password-actual-autorizacion']"));
@@ -429,17 +507,12 @@ public class cancelacionDePlazoFijo {
         assertEquals(cuentaDestinoObtenidoPaso2, cuentaDestinoObtenidaPaso3);
         System.out.println("Cuenta destino obtenido en paso 3: "+cuentaDestinoObtenidaPaso3);
 
-        //Monto transferido
-        //String montoTransferidoObtenidaPaso3= loginPersonaIBK.driver.findElement(montotransferidoPaso3).getText();
-        //assertEquals(montoAtransferirObtenidoPaso2, montoTransferidoObtenidaPaso3);
-        //System.out.println("Monto transferido obtenido en paso 3: "+montoTransferidoObtenidaPaso3);
-
         //Validación de existencia de campos correspondientes a operación multimoneda
 
         String  etiquetatipocambio= loginPersonaIBK.driver.findElement(etiquetatipoCambio).getText();
         String tipoCambio= loginPersonaIBK.driver.findElement(tipoDeCambio).getText();
 
-        if (etiquetatipocambio.contains("Tipo de cambio")) {
+        if (etiquetatipocambio.contains("Tipo de cambio")) { //es operación multimoneda
             if(tipoCambio !=null && tipoCambio !="S/ 0.00"  && tipoCambio.contains(monedaSoles) ){
                 tipoDeCambioObtenidoPaso3=tipoCambio;
                 assertEquals(tipoDeCambioObtenidoPaso3,tipoDeCambioObtenidoPaso2);
@@ -503,14 +576,32 @@ public class cancelacionDePlazoFijo {
 
     }
     public void funcionEnviarConstancia(String correo, String asunto){
+
+        //Screen screen = new Screen();
+
         WebElement seleccionarEmailPara= loginPersonaIBK.driver.findElement(emailPara);
         seleccionarEmailPara.sendKeys(correo);
 
         WebElement seleccionarEmailAsunto= loginPersonaIBK.driver.findElement(emailasunto);
         seleccionarEmailAsunto.sendKeys(asunto);
 
-        WebElement seleccionarBotonEnviar= loginPersonaIBK.driver.findElement(constanciaBotonEnviar);
+        WebElement seleccionarBotonEnviar= loginPersonaIBK.driver.findElement(By.xpath("*//a[contains(text(),'ENVIAR')]"));
         seleccionarBotonEnviar.click();
+
+
+        /*
+
+        if (loginPersonaIBK.driver.findElement(By.xpath("//*[@id='j_idt226']")).isDisplayed()){
+            WebElement seleccionarBoton_Enviar= loginPersonaIBK.driver.findElement(By.xpath("//*[@id='j_idt226']"));
+            seleccionarBoton_Enviar.click();
+        }else if (!loginPersonaIBK.driver.findElement(By.xpath("//*[@id='j_idt226']")).isDisplayed()) {
+            WebElement seleccionarBotonEnviar= loginPersonaIBK.driver.findElement(constanciaBotonEnviar);
+            seleccionarBotonEnviar.click();
+        }
+
+         */
+
+
     }
     public void validarDatosDeModalConstancia(){
 
@@ -521,65 +612,84 @@ public class cancelacionDePlazoFijo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        String numeroReferenciaConstancia= loginPersonaIBK.driver.findElement(constanciaNumeroDeReferencia).getText();
-        String numeroReferenciaObtenidoConstancia= numeroReferenciaConstancia;
-        assertEquals(numeroReferenciaObtenidoPaso3,numeroReferenciaObtenidoConstancia);
 
-        String numeroOperacionObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaNumeroDeOperacion).getText();
-        assertEquals(numeroOperacionObtenidoPaso3,numeroOperacionObtenidoConstancia);
+        if (cuentaDestinoObtenidoPaso2!=null){ //es una operación de cancelación con fondo
+            String numeroReferenciaConstancia= loginPersonaIBK.driver.findElement(constanciaNumeroDeReferencia).getText();
+            String numeroReferenciaObtenidoConstancia= numeroReferenciaConstancia;
+            assertEquals(numeroReferenciaObtenidoPaso3,numeroReferenciaObtenidoConstancia);
 
-        String fechaPresentacionObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaFechaDePresentacion).getText();
-        assertEquals(fechaDePresentacionObtenidoPaso3,fechaPresentacionObtenidoConstancia);
+            String numeroOperacionObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaNumeroDeOperacion).getText();
+            assertEquals(numeroOperacionObtenidoPaso3,numeroOperacionObtenidoConstancia);
 
-        //Datos de Cancelación
-        String cuentaCanceladaObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaCuentaCancelada).getText();
-        assertEquals(cuentaACancelarObtenidoPaso2,cuentaCanceladaObtenidoConstancia);
+            String fechaPresentacionObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaFechaDePresentacion).getText();
+            assertEquals(fechaDePresentacionObtenidoPaso3,fechaPresentacionObtenidoConstancia);
 
-        String importeDeDocumentoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaImporteDeDocumento).getText();
-        assertEquals(importeDeDocumentoObtenidoPaso2,importeDeDocumentoObtenidoConstancia);
+            //Datos de Cancelación
+            String cuentaCanceladaObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaCuentaCancelada).getText();
+            assertEquals(cuentaACancelarObtenidoPaso2,cuentaCanceladaObtenidoConstancia);
 
-        String interesPositivoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaInteresCalculadoAlaTasaVigentePositivo).getText();
-        assertEquals(interesPositivoObtenidoPaso2,interesPositivoObtenidoConstancia);
+            String importeDeDocumentoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaImporteDeDocumento).getText();
+            assertEquals(importeDeDocumentoObtenidoPaso2,importeDeDocumentoObtenidoConstancia);
 
-        String interesAntesDePlazoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaInteresPorCancelacionAntesDePlazo).getText();
-        assertEquals(interesXcancelacionAntesDePlazoObtenidoPaso2,interesAntesDePlazoObtenidoConstancia);
+            String interesPositivoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaInteresCalculadoAlaTasaVigentePositivo).getText();
+            assertEquals(interesPositivoObtenidoPaso2,interesPositivoObtenidoConstancia);
 
-        String interesNegativoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaInteresCalculadoAlaTasaVigenteNegativo).getText();
-        assertEquals(interesNegativoObtenidoPaso2,interesNegativoObtenidoConstancia);
+            String interesAntesDePlazoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaInteresPorCancelacionAntesDePlazo).getText();
+            assertEquals(interesXcancelacionAntesDePlazoObtenidoPaso2,interesAntesDePlazoObtenidoConstancia);
 
-        String montoCancelacionObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaMontoDeCancelacion).getText();
-        assertEquals(montoDeCancelacionObtenidoPaso2,montoCancelacionObtenidoConstancia);
+            String interesNegativoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaInteresCalculadoAlaTasaVigenteNegativo).getText();
+            assertEquals(interesNegativoObtenidoPaso2,interesNegativoObtenidoConstancia);
 
-        String itfObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaITF).getText();
-        assertEquals(itfobtenidoPaso2,itfObtenidoConstancia);
+            String montoCancelacionObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaMontoDeCancelacion).getText();
+            assertEquals(montoDeCancelacionObtenidoPaso2,montoCancelacionObtenidoConstancia);
 
-        //Datos del Abono
-        String cuentaDestinoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaCuentaDestino).getText();
-        assertEquals(cuentaDestinoObtenidoPaso2, cuentaDestinoObtenidoConstancia);
+            String itfObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaITF).getText();
+            assertEquals(itfobtenidoPaso2,itfObtenidoConstancia);
 
-        //Validación de existencia de campos correspondientes a operación multimoneda
-        String constanciaetiquetatipocambio= loginPersonaIBK.driver.findElement(constanciaEtiquetaTipoCambio).getText();
+            //Datos del Abono
+            String cuentaDestinoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaCuentaDestino).getText();
+            assertEquals(cuentaDestinoObtenidoPaso2, cuentaDestinoObtenidoConstancia);
 
-        if (constanciaetiquetatipocambio.contains("Tipo de cambio")){
-            String constanciatipoCambio= loginPersonaIBK.driver.findElement(constanciaTipoDeCambio).getText();
-            if(constanciatipoCambio !=null && constanciatipoCambio !="S/ 0.00"  && constanciatipoCambio.contains(monedaSoles) ){
-                assertEquals(tipoDeCambioObtenidoPaso2,constanciatipoCambio);
+            //Validación de existencia de campos correspondientes a operación multimoneda
+            String constanciaetiquetatipocambio= loginPersonaIBK.driver.findElement(constanciaEtiquetaTipoCambio).getText();
 
-                String montoEquivalenteObtenidoConstancia = loginPersonaIBK.driver.findElement(constanciaMontoEquivalente).getText();
-                assertEquals(montoEquivalenteObtenidoPaso2, montoEquivalenteObtenidoConstancia );
+            if (constanciaetiquetatipocambio.contains("Tipo de cambio")){
+                String constanciatipoCambio= loginPersonaIBK.driver.findElement(constanciaTipoDeCambio).getText();
+                if(constanciatipoCambio !=null && constanciatipoCambio !="S/ 0.00"  && constanciatipoCambio.contains(monedaSoles) ){
+                    assertEquals(tipoDeCambioObtenidoPaso2,constanciatipoCambio);
 
-                //Monto a transferir
-                String montoTransferidoMultimonedaObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaMontoTransferidoMultimoneda).getText();
-                assertEquals(montoAtransferirmultimonedaObtenidoPaso2, montoTransferidoMultimonedaObtenidoConstancia);
+                    String montoEquivalenteObtenidoConstancia = loginPersonaIBK.driver.findElement(constanciaMontoEquivalente).getText();
+                    assertEquals(montoEquivalenteObtenidoPaso2, montoEquivalenteObtenidoConstancia );
 
-            }else {
-                System.out.println("ERROR " + constanciatipoCambio);
+                    //Monto a transferir
+                    String montoTransferidoMultimonedaObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaMontoTransferidoMultimoneda).getText();
+                    assertEquals(montoAtransferirmultimonedaObtenidoPaso2, montoTransferidoMultimonedaObtenidoConstancia);
+
+                }else {
+                    System.out.println("ERROR " + constanciatipoCambio);
+                }
+
+            } else {
+                String montoTransferidoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaMontoTransferido).getText();
+                assertEquals(montoAtransferirObtenidoPaso2,montoTransferidoObtenidoConstancia);
             }
 
-        } else {
-            String montoTransferidoObtenidoConstancia= loginPersonaIBK.driver.findElement(constanciaMontoTransferido).getText();
-            assertEquals(montoAtransferirObtenidoPaso2,montoTransferidoObtenidoConstancia);
+        }else { //es una operación de cancelación sin fondo
+            String numeroReferenciaObtenido_Constancia= loginPersonaIBK.driver.findElement(numeroReferencia_Paso3).getText();
+            assertEquals(numeroReferenciaObtenidoPaso3,numeroReferenciaObtenido_Constancia);
+
+            String numeroOperacionObtenido_Constancia= loginPersonaIBK.driver.findElement(numeroOperacion_Paso3).getText();
+            assertEquals(numeroOperacionObtenidoPaso3,numeroOperacionObtenido_Constancia);
+
+            String fechaPresentacionObtenido_Constancia= loginPersonaIBK.driver.findElement(fechaPresentacion_Paso3).getText();
+            assertEquals(fechaDePresentacionObtenidoPaso3,fechaPresentacionObtenido_Constancia);
+
+            String cuentaCanceladaObtenido_Constancia= loginPersonaIBK.driver.findElement(cuentaCanceladaEnceroPaso3).getText();
+            assertEquals(cuentaCanceladaEnCeroObtenidoPaso3,cuentaCanceladaObtenido_Constancia);
+
+
         }
+
 
     }
     public void confirmacionDeEnvioDeConstancia(){
@@ -600,7 +710,39 @@ public class cancelacionDePlazoFijo {
         botonAceptar.click();
 
     }
+    public void cancelarCuentaPlazoFijoconEnCero(){
+        //Paso2
+        //Cuenta a cancelar
+        cuentaACancelarObtenido_Paso2= loginPersonaIBK.driver.findElement(cuentaAcancelarEnceroPaso2).getText();
+        String parte1CuentaAcancelar= cuentaACancelarObtenido_Paso2.substring(7,10);
+        String parte2CuentaAcancelar = cuentaACancelarObtenido_Paso2.substring(11,13);;
+        String parte3CuentaAcancelar = cuentaACancelarObtenido_Paso2.substring(14,21);;
+        String cuentaACancelarEsperadaPaso2 = parte1CuentaAcancelar+"-"+parte2CuentaAcancelar+"-"+parte3CuentaAcancelar;
+        assertEquals(cuentaSeleccionadaPaso1, cuentaACancelarEsperadaPaso2);
+        System.out.println("Cuenta a cancelar ok en paso 2");
 
+        completarPaso2De3();
+
+        //Paso 3
+        numeroReferenciaObtenidoPaso3 = loginPersonaIBK.driver.findElement(numeroReferencia_Paso3).getText();
+        assertNotNull(numeroReferenciaObtenidoPaso3);
+
+        numeroOperacionObtenidoPaso3 = loginPersonaIBK.driver.findElement(numeroOperacion_Paso3).getText();
+        assertNotNull(numeroOperacionObtenidoPaso3);
+
+        fechaDePresentacionObtenidoPaso3 = loginPersonaIBK.driver.findElement(fechaPresentacion_Paso3).getText();
+        assertNotNull(fechaDePresentacionObtenidoPaso3);
+
+        //Cuenta a cancelar
+        cuentaCanceladaEnCeroObtenidoPaso3= loginPersonaIBK.driver.findElement(cuentaCanceladaEnceroPaso3).getText();
+        assertEquals(cuentaACancelarObtenido_Paso2, cuentaCanceladaEnCeroObtenidoPaso3);
+        System.out.println("Cuenta a cancelar ok en paso 3");
+
+
+        //310-01-9982290
+
+
+    }
 
 
 

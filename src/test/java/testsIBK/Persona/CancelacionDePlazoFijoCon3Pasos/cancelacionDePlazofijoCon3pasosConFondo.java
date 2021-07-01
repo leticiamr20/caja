@@ -44,7 +44,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        cancelacionDePlazoFijo.completarPaso2De3ConFondo();
+        cancelacionDePlazoFijo.completarPaso2De3();
         //PASO 3
         cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
@@ -84,7 +84,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
             e.printStackTrace();
         }
 
-        cancelacionDePlazoFijo.completarPaso2De3ConFondo();
+        cancelacionDePlazoFijo.completarPaso2De3();
         //PASO 3
         cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
@@ -121,7 +121,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
             e.printStackTrace();
         }
 
-       cancelacionDePlazoFijo.completarPaso2De3ConFondo();
+       cancelacionDePlazoFijo.completarPaso2De3();
         //PASO 3
         cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
@@ -157,7 +157,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        cancelacionDePlazoFijo.completarPaso2De3ConFondo();
+        cancelacionDePlazoFijo.completarPaso2De3();
         //PASO 3
         cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();

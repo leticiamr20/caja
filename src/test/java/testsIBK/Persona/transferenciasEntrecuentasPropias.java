@@ -1,7 +1,9 @@
 package testsIBK.Persona;
 
 import common.BaseDriver;
+import common.cancelacionDePlazoFijo;
 import common.loginPersonaIBK;
+import common.transferencias;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +17,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class transferenciasEntrecuentasPropias extends BaseDriver {
-
-    loginPersonaIBK loginPersonaIBK=  new loginPersonaIBK(driver);
     public static WebDriver driver;
+
+    transferencias transferencias =  new transferencias(driver);
+
 
     private By clickMenuOperaciones = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'OPERACIONES')]");
     private By seleccionSubMenuTransferencias = By.xpath("//form[@id='j_idt72']//div[@id='menuWebIbk']//a[contains(text(),'Transferencias')]");
@@ -46,9 +49,10 @@ public class transferenciasEntrecuentasPropias extends BaseDriver {
     private By montoEquivalentePaso3= By.xpath("//*[@id='ctn-creditos']/div/div[8]/p[2]");
     private By tipoDeCambioPaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[9]/p[2]");
 
+
     @Test
     public void transferenciasEntrecuentasPropias() { //throws Exception
-        //loginPersonaIBK.loginPersonaIBK_usuario1();
+        //loginPersonaIBK.loginPersonaIBK_usuario1("4", "16466306");
 
         WebElement selecionarMenuOperaciones = loginPersonaIBK.driver.findElement(clickMenuOperaciones);
         selecionarMenuOperaciones.click();
@@ -195,4 +199,6 @@ public class transferenciasEntrecuentasPropias extends BaseDriver {
 
 
     }
+
+
 }

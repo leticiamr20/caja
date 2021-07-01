@@ -1,6 +1,5 @@
 package common;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -10,16 +9,10 @@ import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 import util.Utilities;
 
-import java.io.File;
-import java.io.IOException;
-
-import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
 
 public class loginPersonaIBK {
 
-    Screen screen = new Screen();
-    Pattern pattern;
 
 public static WebDriver driver;
 
@@ -40,7 +33,7 @@ public loginPersonaIBK (WebDriver driver){
         driver = new ChromeDriver();
     }
 
-    public void  loginPersonaIBK_usuario1(String tarjetaSelect, String numeroTarjeta) {
+    public  void  loginPersonaIBK_usuario1(String tarjetaSelect, String numeroTarjeta) {
         driver.get("http://10.0.202.9:8080/internetbanking/");
 
         String originalWindows = driver.getWindowHandle();  //Almacena id de ventana original
@@ -87,14 +80,8 @@ public loginPersonaIBK (WebDriver driver){
                 //Ingreamos al app haciendo clic en el botón ingresar
                 driver.findElement(By.name("panel-steps:j_idt88")).click();
                 driver.navigate().to("http://10.0.202.9:8080/internetbanking/ibk/bienvenida#no-back-button");
-
-
             }
-
         }
-
-
-
     }
 
     public void ingresarclavelogin(){
