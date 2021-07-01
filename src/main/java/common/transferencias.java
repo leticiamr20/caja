@@ -33,14 +33,14 @@ public class transferencias {
     private By tituloPaso2= By.xpath("//*[@id='subTitulo']");
     private By tituloPaso3= By.xpath("");
 
-    //locartos Paso 1
+    //locators Paso 1
     private By cuentaOrigenPaso1=By.xpath("//*[@id='cuenta-origen']");
     private By cuentaDestinoPaso1= By.xpath("//*[@id='cuenta-destino']");
     private By glosa = By.xpath("//*[@id='glosa']");
     private By montoTransferencia= By.xpath("//*[@id='monto']");
     private By siguientePaso1= By.xpath("//*[@id='operacion']/div/div[3]/div[3]/input");
 
-    //Locatos Paso 2
+    //Locators Paso 2
     private By cuentaOrigenPaso2 = By.xpath("//*[@id='ctn-creditos']/div[1]/p[2]");
     private By montoAtransferirPaso2 = By.xpath("//*[@id='ctn-creditos']/div[2]/span");
     private By cuentaDestinoPaso2 = By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
@@ -72,6 +72,20 @@ public class transferencias {
     private By montoEquivalentePaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[8]/p[2]");
     private By glosa_Paso3 = By.xpath("//*[@id='glosa']");
     private By tipoDeCambio_Paso3 = By.xpath("//*[@id='ctn-creditos']/div/div[9]/p[2]");
+
+    //Locartors
+    private By constancia_tipoOperacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[1]/span[2]");
+    private By constancia_numeroReferencia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[2]/span[2]");
+    private By constancia_numeroDeOperacion= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[3]/span[2]");
+    private By constancia_fechaDePresentacion= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[2]");
+    private By Constacncia_horadePresentación= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[3]");
+    private By constancia_cuentaOrigen= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[2]/span[2]");
+    private By constancia_montoAtransferir = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[3]/span[2]");
+    private By constancia_cuentaDestino = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[1]/span[2]");
+    private By constancia_montoEquivalente= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[2]/span[2]");
+    private By constancia_tipoDeCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[3]/span[2]");
+    private By constancia_glosa= By.xpath("//*[@id='glosaModal']");
+    private By constancia_etiqueta=By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[3]/span[1]");
 
     private String cuentaOrigenSeleccionadaPaso1;
     private String cuentaDestinoSeleccionadaPaso1;
@@ -318,9 +332,35 @@ public class transferencias {
 
     }
 
+    public void validarDatosConstancia(){
+        String  constancia_etiquetaTipoCambio= loginPersonaIBK.driver.findElement(constancia_etiqueta).getText();
+
+        if (constancia_etiquetaTipoCambio.contains("Tipo de cambio")){
+            String constanciatipoOperacion= loginPersonaIBK.driver.findElement(constancia_tipoOperacion).getText();
+            assertEquals(tipoOperacionObtenidoPaso3,constanciatipoOperacion);
+
+            String constanciaNumeroReferencia= loginPersonaIBK.driver.findElement(constancia_numeroReferencia).getText();
+            assertEquals(numeroDeReferenciaObtenidoPaso3,constanciaNumeroReferencia);
+
+            String constanciaNumeroOperacion= loginPersonaIBK.driver.findElement(constancia_numeroDeOperacion).getText();
+            assertEquals(numeroDeOperacionObtenidoPaso3,constanciaNumeroOperacion);
 
 
-//cuenta para test transferencias a terceros 210-01-0600946
+
+
+        }else {
+
+        }
+
+
+
+
+
+    }
+
+
+
+
 
 
 }

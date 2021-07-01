@@ -33,7 +33,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
             e.printStackTrace();
         }
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
-        cancelacionDePlazoFijo.completarPaso1De3ConFondo("310019982221","210010021742");
+        cancelacionDePlazoFijo.completarPaso1De3ConFondo("310019982331","210010021742");
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
@@ -50,7 +50,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","test");
+        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","transferenciasEntreCuentasPropias");
         try {
             Thread.sleep(8000);
         } catch (InterruptedException e) {
@@ -90,7 +90,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","test");
+        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","transferenciasEntreCuentasPropias");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -127,7 +127,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","test");
+        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","transferenciasEntreCuentasPropias");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -163,7 +163,7 @@ public class cancelacionDePlazofijoCon3pasosConFondo extends BaseDriver {
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","test cancelacionDePlazoFijoDeSolesADolaresCon3Pasos");
+        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","transferenciasEntreCuentasPropias cancelacionDePlazoFijoDeSolesADolaresCon3Pasos");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

@@ -12,11 +12,11 @@ public class cancelacionDePlazoFijoCon3pasosAccesoDirecto {
     public void cancelarCuentaDePlazoFijoSinFondoCon3pasos() {
 
         cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9979302");
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.cancelarCuentaPlazoFijoconEnCero();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","test cancelarCuentaDePlazoFijoSinFondoCon3pasos");
+        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","cancelarCuentaDePlazoFijoSinFondoCon3pasos");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

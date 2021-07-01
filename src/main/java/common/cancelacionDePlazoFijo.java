@@ -316,14 +316,28 @@ public class cancelacionDePlazoFijo {
 
     }
     public void validarDatosDeCancelacionPaso2(){
-        //Cuenta a cancelar
-        cuentaACancelarObtenidoPaso2= loginPersonaIBK.driver.findElement(cuentaAcancelarPaso2).getText();
-        String parte1CuentaAcancelar= cuentaSeleccionadaPaso1.substring(0,3);
-        String parte2CuentaAcancelar = cuentaSeleccionadaPaso1.substring(4,6);
-        String parte3CuentaAcancelar = cuentaSeleccionadaPaso1.substring(7,14);
-        String cuentaACancelarEsperadaPaso2 = "Cuenta "+parte1CuentaAcancelar+"-"+parte2CuentaAcancelar+"-"+parte3CuentaAcancelar;
-        assertEquals(cuentaACancelarEsperadaPaso2, cuentaACancelarObtenidoPaso2);
-        System.out.println("Cuenta a cancelar ok en paso 2");
+        if (cuentaSeleccionadaPaso1.contains("-")){
+            //Cuenta a cancelar
+            cuentaACancelarObtenidoPaso2= loginPersonaIBK.driver.findElement(cuentaAcancelarPaso2).getText();
+            String parte1CuentaAcancelar= cuentaSeleccionadaPaso1.substring(0,3);
+            String parte2CuentaAcancelar = cuentaSeleccionadaPaso1.substring(4,6);
+            String parte3CuentaAcancelar = cuentaSeleccionadaPaso1.substring(7,14);
+            String cuentaACancelarEsperadaPaso2 = "Cuenta "+parte1CuentaAcancelar+"-"+parte2CuentaAcancelar+"-"+parte3CuentaAcancelar;
+            assertEquals(cuentaACancelarEsperadaPaso2, cuentaACancelarObtenidoPaso2);
+            System.out.println("Cuenta a cancelar ok en paso 2");
+
+        }else {
+            cuentaACancelarObtenidoPaso2= loginPersonaIBK.driver.findElement(cuentaAcancelarPaso2).getText();
+            String parte1CuentaAcancelar= cuentaSeleccionadaPaso1.substring(0,3);
+            String parte2CuentaAcancelar = cuentaSeleccionadaPaso1.substring(3,5);
+            String parte3CuentaAcancelar = cuentaSeleccionadaPaso1.substring(5,12);
+            String cuentaACancelarEsperadaPaso2 = "Cuenta "+parte1CuentaAcancelar+"-"+parte2CuentaAcancelar+"-"+parte3CuentaAcancelar;
+            assertEquals(cuentaACancelarEsperadaPaso2, cuentaACancelarObtenidoPaso2);
+            System.out.println("Cuenta a cancelar ok en paso 2");
+
+        }
+
+
 
         //Importe de documentos
         String validarImporteDeDocumentoPaso2= loginPersonaIBK.driver.findElement(importeDeDocumentosPaso2).getText();
@@ -576,9 +590,6 @@ public class cancelacionDePlazoFijo {
 
     }
     public void funcionEnviarConstancia(String correo, String asunto){
-
-        //Screen screen = new Screen();
-
         WebElement seleccionarEmailPara= loginPersonaIBK.driver.findElement(emailPara);
         seleccionarEmailPara.sendKeys(correo);
 
@@ -587,24 +598,8 @@ public class cancelacionDePlazoFijo {
 
         WebElement seleccionarBotonEnviar= loginPersonaIBK.driver.findElement(By.xpath("*//a[contains(text(),'ENVIAR')]"));
         seleccionarBotonEnviar.click();
-
-
-        /*
-
-        if (loginPersonaIBK.driver.findElement(By.xpath("//*[@id='j_idt226']")).isDisplayed()){
-            WebElement seleccionarBoton_Enviar= loginPersonaIBK.driver.findElement(By.xpath("//*[@id='j_idt226']"));
-            seleccionarBoton_Enviar.click();
-        }else if (!loginPersonaIBK.driver.findElement(By.xpath("//*[@id='j_idt226']")).isDisplayed()) {
-            WebElement seleccionarBotonEnviar= loginPersonaIBK.driver.findElement(constanciaBotonEnviar);
-            seleccionarBotonEnviar.click();
-        }
-
-         */
-
-
     }
     public void validarDatosDeModalConstancia(){
-
         WebElement EnviarConstancia = loginPersonaIBK.driver.findElement(seleccionarEnviarConstancia);
         EnviarConstancia.click();
         try {
@@ -612,7 +607,6 @@ public class cancelacionDePlazoFijo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         if (cuentaDestinoObtenidoPaso2!=null){ //es una operación de cancelación con fondo
             String numeroReferenciaConstancia= loginPersonaIBK.driver.findElement(constanciaNumeroDeReferencia).getText();
             String numeroReferenciaObtenidoConstancia= numeroReferenciaConstancia;
