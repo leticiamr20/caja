@@ -198,7 +198,7 @@ public class cancelacionDePlazoFijo {
         WebDriverWait wait = new WebDriverWait (loginPersonaIBK.driver,5);
         wait.until(ExpectedConditions.presenceOfElementLocated(etiquetaPazoFijo));
 
-        By filaCuenta = By.xpath("//*[@id='DataTables_Table_1']//tr[@class='odd']/td[@data-label='Nº cuenta']//p[contains(text(),'"+cuentaSeleccionada+"')]/../../../td[@data-label='Detalle']//a");
+        By filaCuenta = By.xpath("//tr[@class='odd']/td[@data-label='Nº cuenta']//p[contains(text(),'"+cuentaSeleccionada+"')]/../../../td[@data-label='Detalle']//a");
 
         Actions seleccionarFila = new Actions(loginPersonaIBK.driver);
         WebElement Cuenta= loginPersonaIBK.driver.findElement(filaCuenta);
@@ -731,11 +731,6 @@ public class cancelacionDePlazoFijo {
         cuentaCanceladaEnCeroObtenidoPaso3= loginPersonaIBK.driver.findElement(cuentaCanceladaEnceroPaso3).getText();
         assertEquals(cuentaACancelarObtenido_Paso2, cuentaCanceladaEnCeroObtenidoPaso3);
         System.out.println("Cuenta a cancelar ok en paso 3");
-
-
-        //310-01-9982290
-
-
     }
 
 

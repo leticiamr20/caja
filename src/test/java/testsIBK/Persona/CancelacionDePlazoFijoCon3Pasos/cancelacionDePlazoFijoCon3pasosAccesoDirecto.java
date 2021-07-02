@@ -12,7 +12,7 @@ public class cancelacionDePlazoFijoCon3pasosAccesoDirecto {
     public void cancelarCuentaDePlazoFijoSinFondoCon3pasos() {
 
         cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9979302");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("");
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.cancelarCuentaPlazoFijoconEnCero();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
@@ -23,24 +23,21 @@ public class cancelacionDePlazoFijoCon3pasosAccesoDirecto {
             e.printStackTrace();
         }
         cancelacionDePlazoFijo.confirmacionDeEnvioDeConstancia();
-
-
     }
 
     @Test
     public void cancelarCuentaPlazofijoDeSolesASolesCon3pasos(){
         cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982572");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9981998");
         cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
 
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
-        cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210010021742");
+        cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("21001003429");
 
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso2();
-
         try {
             Thread.sleep(4000);
         } catch (InterruptedException e) {
