@@ -19,7 +19,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsT
 
 public class Utilities extends BaseDriver {
 
-    Screen screen = new Screen();
+
     public void esVisibleElemento(WebElement elemento){
         WebDriverWait wait = new WebDriverWait (driver,20);
         wait.until(ExpectedConditions.visibilityOf(elemento));
@@ -27,8 +27,7 @@ public class Utilities extends BaseDriver {
 
 
     public void ingresarclavede6(){
-
-
+        Screen screen = new Screen();
         Pattern pattern;
         pattern= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\CAJA\\caja\\src\\main\\resources\\imagenes\\tecla1Clave6.PNG");
         try {

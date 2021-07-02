@@ -40,7 +40,14 @@ public class transferenciasEntreCuentasPropias extends BaseDriver {
         transferencias.validarDataPaso2();
         transferencias.Paso2();
         transferencias.Paso3();
-        //transferencias.validarDatosConstancia();
+        transferencias.validarDatosConstancia();
+        transferencias.enviarConstancia("leticia.moreno@avantica.com", "transferenciasEntreCuentasPropiasSolesASoles");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        transferencias.confirmacion();
     }
 
     @Test
@@ -61,6 +68,14 @@ public class transferenciasEntreCuentasPropias extends BaseDriver {
         transferencias.validarDataPaso2();
         transferencias.Paso2();
         transferencias.Paso3();
+        transferencias.validarDatosConstancia();
+        transferencias.enviarConstancia("leticia.moreno@avantica.com", "transferenciasEntreCuentasPropiasSolesAdolares");
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        transferencias.confirmacion();
 
     }
 
@@ -82,6 +97,14 @@ public class transferenciasEntreCuentasPropias extends BaseDriver {
         transferencias.validarDataPaso2();
         transferencias.Paso2();
         transferencias.Paso3();
+        transferencias.validarDatosConstancia();
+        transferencias.enviarConstancia("leticia.moreno@avantica.com", "transferenciasEntreCuentasPropiasDolaresAsoles");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        transferencias.confirmacion();
 
     }
 
