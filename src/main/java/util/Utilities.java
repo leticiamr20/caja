@@ -1,29 +1,9 @@
 package util;
 
 import common.BaseDriver;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.Augmenter;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Pattern;
-import org.sikuli.script.Screen;
-
-import java.io.File;
-import java.io.IOException;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
+import org.sikuli.script.*;
 
 public class Utilities extends BaseDriver {
-
-
-    public void esVisibleElemento(WebElement elemento){
-        WebDriverWait wait = new WebDriverWait (driver,20);
-        wait.until(ExpectedConditions.visibilityOf(elemento));
-    }
 
 
     public void ingresarclavede6(){
@@ -46,7 +26,9 @@ public class Utilities extends BaseDriver {
 
 
 
-
-
-
 }
+
+
+
+
+

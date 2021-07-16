@@ -1,5 +1,7 @@
-package common;
+package pageObjects;
 
+import common.BaseDriver;
+import common.loginPersonaIBK;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,15 +13,16 @@ import util.Utilities;
 
 import static org.junit.Assert.*;
 
-public class transferencias {
+public class transferencias{
 
     public static WebDriver driver;
-    loginPersonaIBK LoginPersonaIBK = new loginPersonaIBK();
 
+    loginPersonaIBK LoginPersonaIBK = new loginPersonaIBK();
     public transferencias (WebDriver driver){
         this.driver= driver;
-    }
 
+
+    }
 
     private By menuOperaciones = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'OPERACIONES')]");
     private By subMenuTransferencias = By.xpath("//form[@id='j_idt72']//div[@id='menuWebIbk']//a[contains(text(),'Transferencias')]");
@@ -113,6 +116,8 @@ public class transferencias {
     private String montoEquivalenteObtenidoPaso3;
     private String tipoDeCambioObtenidoPaso3;
 
+    private String montoAtransferirObtenido_Paso2;
+
     String monedaSoles= "S/";
     String monedaDolares= "US$";
 
@@ -120,6 +125,7 @@ public class transferencias {
 
     public void loginUsuarioTransferencias() {
         LoginPersonaIBK.loginPersonaIBK_usuario1("4", "16466306");
+
     }
     public void ingresarAMenuTransferenciasEntreCuentasPropias(){
         Actions Paso1 = new Actions(loginPersonaIBK.driver);
@@ -243,20 +249,20 @@ public class transferencias {
 
         }else {
             montoAtransferirObtenidoPaso2= loginPersonaIBK.driver.findElement(montoAtransferirPaso2).getText();
-            String montoAtransferirObtenido_Paso2= montoAtransferirObtenidoPaso2.substring(3,6);
-            assertEquals(montoATransferirPaso1,montoAtransferirObtenido_Paso2);
-
+            if (montoAtransferirObtenidoPaso2.contains(montoATransferirPaso1) && montoAtransferirObtenidoPaso2.contains("US$")){
+                montoAtransferirObtenido_Paso2= montoAtransferirObtenidoPaso2.substring(4);
+            }else{
+                montoAtransferirObtenido_Paso2= montoAtransferirObtenidoPaso2.substring(3);
+            }
             cuentaDestinoObtenidoPaso2= loginPersonaIBK.driver.findElement(cuentaDestinoPaso2).getText();
             String cuentaDestinoObtenido_Paso2= cuentaDestinoObtenidoPaso2.substring(7,21);
             assertEquals(cuentaDestinoSeleccionadaPaso1,cuentaDestinoObtenido_Paso2);
-
 
             glosaObtenidaPaso2=loginPersonaIBK.driver.findElement(glosaPaso2).getText();
             assertEquals(glosaIngresadaPaso1,glosaObtenidaPaso2);
 
             System.out.println("Validación exitosa de operación Paso 2");
         }
-
 
     }
     public void Paso2(){
@@ -424,11 +430,6 @@ public class transferencias {
             assertEquals(glosaObtenidoPaso3,constanciaGlosa_);
 
         }
-
-
-
-
-
     }
     public void enviarConstancia(String correo , String asunto){
         WebElement seleccionarEmailPara= loginPersonaIBK.driver.findElement(emailPara);
@@ -442,6 +443,11 @@ public class transferencias {
     }
 
     public void confirmacion(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         String tituloConfirmacionObtenido = loginPersonaIBK.driver.findElement(By.xpath("//form[@id='j_idt72']//div[@id='dlgConfirmacion']/div[2]/h2")).getText();
         String tituloConfirmacionEsperado= "CONFIRMACIÓN";
         assertEquals(tituloConfirmacionEsperado,tituloConfirmacionObtenido);

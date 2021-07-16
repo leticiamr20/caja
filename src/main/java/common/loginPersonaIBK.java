@@ -1,5 +1,6 @@
 package common;
 
+import org.junit.BeforeClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -7,37 +8,30 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
-import util.Utilities;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
 
-public class loginPersonaIBK {
+public class loginPersonaIBK{
 
-
-public static WebDriver driver;
-
-public loginPersonaIBK (WebDriver driver){
-    this.driver= driver;
-}
-
-
-
-    Utilities utilities = new Utilities();
-    private By tipotarjeta= By.id("panel-steps:login-card-select");
-    private By numerotarjeta = By.xpath("//*[@id='panel-steps:login-card-number']");
-
+   public static WebDriver driver;
 
 
     public loginPersonaIBK() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
+
     }
 
-    public  void  loginPersonaIBK_usuario1(String tarjetaSelect, String numeroTarjeta) {
+    private  By tipotarjeta= By.id("panel-steps:login-card-select");
+    private  By numerotarjeta = By.xpath("//*[@id='panel-steps:login-card-number']");
+
+    public void  loginPersonaIBK_usuario1(String tarjetaSelect, String numeroTarjeta){
+
         driver.get("http://10.0.202.9:8080/internetbanking/");
 
         String originalWindows = driver.getWindowHandle();  //Almacena id de ventana original
         assert driver.getWindowHandles().size()==1; //comprueba que no existen otras ventanas desplegadas
+
         driver.findElement(By.id("j_idt4:j_idt6")).click(); //Lleva a la ventana hija
 
         WebDriverWait wait = new WebDriverWait(driver,600);
@@ -83,6 +77,8 @@ public loginPersonaIBK (WebDriver driver){
             }
         }
     }
+
+
 
     public void ingresarclavelogin(){
 

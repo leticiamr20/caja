@@ -1,6 +1,6 @@
 package testsIBK.Persona.CancelacionDePlazoFijoCon3Pasos;
 
-import common.cancelacionDePlazoFijo;
+import pageObjects.cancelacionDePlazoFijo;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -12,7 +12,7 @@ public class cancelacionDePlazoFijoCon3pasosAccesoDirecto {
     public void cancelarCuentaDePlazoFijoSinFondoCon3pasos() {
 
         cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982070");
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.cancelarCuentaPlazoFijoconEnCero();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
@@ -28,11 +28,11 @@ public class cancelacionDePlazoFijoCon3pasosAccesoDirecto {
     @Test
     public void cancelarCuentaPlazofijoDeSolesASolesCon3pasos(){
         cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9981998");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982373");
         cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
 
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
-        cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("21001003429");
+        cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210010000792");
 
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
@@ -61,7 +61,12 @@ public class cancelacionDePlazoFijoCon3pasosAccesoDirecto {
     @Test
     public void cancelarCuentaPlazofijoDeDolaresADolaresCon3pasos(){
         cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-02-9979010");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-02-9979072");
         cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
 
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();

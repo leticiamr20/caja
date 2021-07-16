@@ -1,14 +1,12 @@
-package common;
+package pageObjects;
 
-
+import common.loginPersonaIBK;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 import util.Utilities;
 
@@ -18,7 +16,7 @@ import static org.junit.Assert.*;
 public class cancelacionDePlazoFijo {
 
     public static WebDriver driver;
-    Screen screen = new Screen();
+
     loginPersonaIBK LoginPersonaIBK = new loginPersonaIBK();
     Utilities  utilities = new Utilities();
 
@@ -26,8 +24,8 @@ public class cancelacionDePlazoFijo {
     public cancelacionDePlazoFijo (WebDriver driver){
         this.driver= driver;
     }
-    private By clickMenuOperaciones = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'OPERACIONES')]");
-    private By seleccionSubMenuPlazoFijo= By.xpath("//*[@id='j_idt74:1:j_idt81:0:j_idt83']");
+    private By menuOperaciones = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'OPERACIONES')]");
+    private By subMenuPlazoFijo= By.xpath("//*[@id='j_idt74:1:j_idt81:0:j_idt83']");
     private By conAbonoCuentaPropia = By.xpath("//*[@id='j_idt74:1:j_idt81:0:j_idt86:2:j_idt91:0:j_idt93']");
 
     private By tituloformulario = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/h5");
@@ -167,11 +165,11 @@ public class cancelacionDePlazoFijo {
         LoginPersonaIBK.loginPersonaIBK_usuario1("4", "16466306");
     }
     public void ingresarACancelacionDePlazoFijoDesdeMenu() {
-        WebElement selecionarMenuOperaciones = loginPersonaIBK.driver.findElement(clickMenuOperaciones);
+        WebElement selecionarMenuOperaciones = loginPersonaIBK.driver.findElement(menuOperaciones);
         selecionarMenuOperaciones.click();
 
         Actions action = new Actions(loginPersonaIBK.driver);
-        WebElement seleccionarSubMenuPlazofijo = loginPersonaIBK.driver.findElement(seleccionSubMenuPlazoFijo);
+        WebElement seleccionarSubMenuPlazofijo = loginPersonaIBK.driver.findElement(subMenuPlazoFijo);
         action.moveToElement(seleccionarSubMenuPlazofijo).build().perform();
 
         WebDriverWait wait = new WebDriverWait(loginPersonaIBK.driver,6000);
