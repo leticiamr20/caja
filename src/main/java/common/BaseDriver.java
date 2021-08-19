@@ -9,7 +9,7 @@ public class BaseDriver {
 
     protected static WebDriver driver;
 
-    public void initDriver(){
+    public static void initDriver(){
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         try {
             driver = new ChromeDriver();

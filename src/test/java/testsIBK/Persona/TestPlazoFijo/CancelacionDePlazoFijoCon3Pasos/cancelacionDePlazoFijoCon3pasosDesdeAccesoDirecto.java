@@ -1,175 +1,134 @@
-package testsIBK.Persona.CancelacionDePlazoFijoCon3Pasos;
+package testsIBK.Persona.TestPlazoFijo.CancelacionDePlazoFijoCon3Pasos;
 
+import common.BaseDriver;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import pageObjects.cancelacionDePlazoFijo;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
+import util.Utilities;
 
-public class cancelacionDePlazoFijoCon3pasosAccesoDirecto {
+public class cancelacionDePlazoFijoCon3pasosDesdeAccesoDirecto extends BaseDriver {
+
     cancelacionDePlazoFijo cancelacionDePlazoFijo =  new cancelacionDePlazoFijo(driver);
-    public static WebDriver driver;
+    Utilities utilities = new Utilities();
+
+
+    @BeforeClass
+    public static void driverInstanceCreation() {
+        initDriver();
+    }
+
+    @Before
+    public void metodosBefore(){
+        utilities.loginPersonaIBK_usuario1("4", "16466306");
+    }
 
     @Test
     public void cancelarCuentaDePlazoFijoSinFondoCon3pasos() {
 
-        cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982070");
+        //utilities.loginPersonaIBK_usuario1("4", "16466306");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982310");
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.cancelarCuentaPlazoFijoconEnCero();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","cancelarCuentaDePlazoFijoSinFondoCon3pasos");
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cancelacionDePlazoFijo.confirmacionDeEnvioDeConstancia();
+        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaDePlazoFijoSinFondoCon3pasos");
+        utilities.validarConformidadDeEnvio();
     }
 
     @Test
     public void cancelarCuentaPlazofijoDeSolesASolesCon3pasos(){
-        cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982373");
+        //utilities.loginPersonaIBK_usuario1("4", "16466306");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982483");
         cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
-
+        //Paso 1
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
         cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210010000792");
-
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso2();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         cancelacionDePlazoFijo.completarPaso2De3();
         //PASO 3
         cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeSolesASolesCon3pasos");
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cancelacionDePlazoFijo.confirmacionDeEnvioDeConstancia();
+        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeSolesASolesCon3pasos");
+        utilities.validarConformidadDeEnvio();
     }
 
     @Test
     public void cancelarCuentaPlazofijoDeDolaresADolaresCon3pasos(){
-        cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-02-9979072");
+        //utilities.loginPersonaIBK_usuario1("4", "16466306");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-02-9979439");
         cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
-
+        //Paso 1
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
         cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210029556371");
-
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso2();
-
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         cancelacionDePlazoFijo.completarPaso2De3();
         //PASO 3
         cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeDolaresADolaresCon3pasos");
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cancelacionDePlazoFijo.confirmacionDeEnvioDeConstancia();
+        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeDolaresADolaresCon3pasos");
+        utilities.validarConformidadDeEnvio();
 
     }
 
     @Test
     public void cancelarCuentaPlazofijoDeDolaresASolesCon3pasos(){
-        cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-02-9979025");
+        //utilities.loginPersonaIBK_usuario1("4", "16466306");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-02-9979444");
         cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
-
+        //Paso 1
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
         cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210010021742");
-
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso2();
-
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         cancelacionDePlazoFijo.completarPaso2De3();
         //PASO 3
         cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeDolaresASolesCon3pasos");
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cancelacionDePlazoFijo.confirmacionDeEnvioDeConstancia();
+        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeDolaresASolesCon3pasos");
+        utilities.validarConformidadDeEnvio();
 
     }
 
     @Test
     public void cancelarCuentaPlazofijoDeSolesADolaresCon3pasos(){
-        cancelacionDePlazoFijo.loginUsuarioCancelacion3pasos();
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9983094");
+        //utilities.loginPersonaIBK_usuario1("4", "16466306");
+        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9983450");
         cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
-
+        //Paso 1
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
         cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210029556371");
-
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso2();
-
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         cancelacionDePlazoFijo.completarPaso2De3();
         //PASO 3
         cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        cancelacionDePlazoFijo.funcionEnviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeSolesADolaresCon3pasos");
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cancelacionDePlazoFijo.confirmacionDeEnvioDeConstancia();
+        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeSolesADolaresCon3pasos");
+        utilities.validarConformidadDeEnvio();
 
+    }
+
+    @After
+    public void metodoAfter(){
+        exitDriver();
     }
 }
