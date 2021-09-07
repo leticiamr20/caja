@@ -159,7 +159,17 @@ public class actualizacionDeDatos {
         WebElement botonSiguiente = driver.findElement(botonNext);
         moverABotonSiguiente.moveToElement(botonSiguiente).build().perform();
 
-        utilities.checkBox();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement check = driver.findElement(By.xpath("//*[@id='actualizacionDatosForm']/div[1]/div[2]/div[3]/div/div/div[1]"));
+        check.getAttribute("aria-checked");
+        check.sendKeys("true");
+
+        //utilities.checkBox();
 
         String rptaActual = driver.findElement(respuestaActualPaso1).getText();
 

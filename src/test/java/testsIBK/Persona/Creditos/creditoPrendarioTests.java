@@ -20,25 +20,23 @@ public class creditoPrendarioTests extends BaseDriver {
 
     @Before
     public void metodosBefore(){
-        utilities.loginPersonaIBK_usuario1("4", "00393748");
+        utilities.loginPersonaIBK_usuario1("4", "17589668");
         utilities.ingresarAMenu("OPERACIONES","Créditos","Crédito prendario");
     }
 
     @Test
     public void creditoPrendarioSoles(){ //06501012161873  06501012177070
-        creditoPrendario.paso1("06501011990447","350","30","210010003429","leticia.moreno@encora.com");
+        creditoPrendario.paso1("06501012161873","350","30","210010025445","leticia.moreno@encora.com");
         creditoPrendario.paso2();
         creditoPrendario.paso3();
         creditoPrendario.validarDatosDeEnvio();
         utilities.enviarConstancia("leticia.moreno@encora.com","creditoPrendarioSoles");
         utilities.validarConformidadDeEnvio();
     }
-/*
+
     @After
     public void metodoAfter(){
         exitDriver();
     }
-
- */
 
 }

@@ -359,7 +359,7 @@ public class creditoGrarantiaDePlazoFijo {
 
         String moneda_paso2 = driver.findElement(monedaPaso2).getText();
 
-        if (moneda_paso1.equals("604")){
+        if (moneda_paso1.contains("604")){
             assertEquals( "SOLES",moneda_paso2);
 
             String montoPrestamo_paso2 = driver.findElement(montoPrestamoPaso2).getText();
@@ -430,51 +430,8 @@ public class creditoGrarantiaDePlazoFijo {
         String datos_trabajo = driver.findElement(datosDeTrabajo).getText();
         requiere = datos_trabajo;
 
-        if(requiere.contains("NO")){
-            utilities.ingresarclavede6();
-            boton_confirmar.click();
-        } else { //Si y trae campos a completar de datos de trabajo
-
-            WebElement giropaso2 = driver.findElement(giroPaso2);
-            giropaso2.click();
-
-            WebElement inputGiro = driver.findElement(By.xpath("/html/body/span/span/span[1]/input"));
-            inputGiro.sendKeys(giro+ Keys.ENTER);
-
-            String  año = driver.findElement(añoVigenciaPaso2).getText();
-            assertEquals("2021",año);
-
-            WebElement antiguedadLaboral_meses = driver.findElement(antiguedadLaboralEnMesesPaso2);
-            antiguedadLaboral_meses.sendKeys(antiguedadLaboralMeses);
-
-            WebElement ingresos_paso2 = driver.findElement(ingresosPaso2);
-            ingresos_paso2.sendKeys(ingresos);
-
-            WebElement gastos_paso2 = driver.findElement(gastosPaso2);
-            gastos_paso2.sendKeys(gastos);
-
-            //para activar caja Disponible
-            WebElement clic = driver.findElement(By.xpath("//*[@id='generate-password-actual-autorizacion']"));
-            clic.click();
-
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            String disponiblepaso2 = driver.findElement(disponiblePaso2).getAttribute("value");
-            disponible_Paso2 = disponiblepaso2;
-            assertNotNull(disponible_Paso2);
-
-            WebElement checkDeclaracion = driver.findElement(checkboxDeclaracionJuradaPaso2);
-            checkDeclaracion.click();
-
-            utilities.ingresarclavede6();
-
-            boton_confirmar.click();
-
-        }
+        utilities.ingresarclavede6();
+        boton_confirmar.click();
 
     }
     public void paso3(){
@@ -508,7 +465,7 @@ public class creditoGrarantiaDePlazoFijo {
         String monedapaso3= driver.findElement(monedaPaso3).getText();
         moneda_paso3 = monedapaso3;
 
-        if (moneda_paso1.equals("604")){
+        if (moneda_paso1.contains("604")){
             assertEquals( "SOLES",moneda_paso3);
 
             montoPrestamo_paso3 = driver.findElement(montoPrestamoPaso3).getText();
@@ -579,29 +536,10 @@ public class creditoGrarantiaDePlazoFijo {
         email_paso3 = driver.findElement(emailPaso3).getText();
         assertEquals(email_paso1,email_paso3);
 
-        if (requiere.contains("NO")){
-            String requiereDatosLaborales = driver.findElement(requiereDatosDeTrabajoPaso3).getText();
-            requiereDatosDeTrabajo_paso3 = requiereDatosLaborales;
-            assertEquals("NO",requiereDatosDeTrabajo_paso3);
-        } else {
-            giro_paso3 = driver.findElement(giroPaso3).getText();
-            assertEquals(giro_paso2,giro_paso3);
+        String requiereDatosLaborales = driver.findElement(requiereDatosDeTrabajoPaso3).getText();
+        requiereDatosDeTrabajo_paso3 = requiereDatosLaborales;
+        assertEquals("NO",requiereDatosDeTrabajo_paso3);
 
-            añoVigencia_paso3 = driver.findElement(añoVigenciaPaso3).getText();
-            assertEquals(añoVigencia_paso2,añoVigencia_paso3);
-
-            antiguedadLaboralEnMeses_paso3 = driver.findElement(antiguedadLaboralEnMesesPaso3).getText();
-            assertEquals(antiguedadLaboralEnMeses_paso2,antiguedadLaboralEnMeses_paso3);
-
-            ingresos_paso3 = driver.findElement(ingresosPaso3).getText();
-            assertEquals(ingresos_paso2,ingresos_paso3);
-
-            gastosDatos_paso3 = driver.findElement(gastosDatosPaso3).getText();
-            assertEquals(gastosPaso2,gastosDatos_paso3);
-
-            disponible_paso3 = driver.findElement(disponiblePaso3).getText();
-            assertEquals(disponiblePaso2,disponiblePaso3);
-        }
     }
     public void validarDatosDeEnvio(){
         WebElement EnviarConstancia = driver.findElement(enviarConstancia);
@@ -708,13 +646,9 @@ public class creditoGrarantiaDePlazoFijo {
         String email_constancia = driver.findElement(emailConstancia).getText();
         assertEquals(email_paso3,email_constancia);
 
-        if (requiere.contains("NO")){
-            String requiereDatosLaborales_constancia= driver.findElement(requiereDatosDeTrabajoConstancia).getText();
-            assertEquals("No",requiereDatosLaborales_constancia);
-        } else {
-            //completar
+        String requiereDatosLaborales_constancia= driver.findElement(requiereDatosDeTrabajoConstancia).getText();
+        assertEquals("No",requiereDatosLaborales_constancia);
 
-        }
 
 
 

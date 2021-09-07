@@ -46,23 +46,10 @@ public class creditoGarantiaDePlazoFijoTests extends BaseDriver {
         utilities.validarConformidadDeEnvio();
     }
 
-    @Test
-    public void creditoGarantiaDPFDeDolaressASoles_sinLibreAmortizacion(){
-        creditoGrarantiaDePlazoFijo.paso1("310-02-9977871","840","500",
-                "0","30","210-02-9556779","leticia.moreno@encora.com",
-                "60","10");
-        creditoGrarantiaDePlazoFijo.paso2("CONSULTOR","12","1000","200");
-        creditoGrarantiaDePlazoFijo.paso3();
-        creditoGrarantiaDePlazoFijo.validarDatosDeEnvio();
-        utilities.enviarConstancia("leticia.moreno@encora.com","creditoGarantiaDPFDeDolaressASoles_sinLibreAmortizacion");
-        utilities.validarConformidadDeEnvio();
-    }
-
 
     @After
     public void metodoAfter(){
        exitDriver();
     }
-
 
 }

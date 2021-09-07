@@ -83,6 +83,9 @@ public class creditoPrendario {
     private final By cuentaDeAbonoPaso2 = By.xpath("//*[@id='cuentaabono']");
     private final By botonConfirmarPaso2 = By.xpath("//*[@id='botonNextSinHoja']");
 
+
+    //private final By
+
     String certificadoDeTasacion_paso2;
     String fechaDeEmision_paso2;
     String estado_paso2;

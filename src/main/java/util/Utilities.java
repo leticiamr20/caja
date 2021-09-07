@@ -188,11 +188,10 @@ public class Utilities extends BaseDriver {
 
     public void checkBox(){
         Screen screen1 = new Screen();
-        Pattern pattern;
-        pattern= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\proyecto Ago 08\\caja\\src\\main\\resources\\imagenes\\checkBox.PNG");
+        Pattern pattern1;
+        pattern1= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\proyecto Ago 08\\caja\\src\\main\\resources\\imagenes\\checkBox.PNG");
         try {
-            screen1.click(pattern);
-
+            screen1.click(pattern1);
         } catch (FindFailed findFailed) {
             findFailed.printStackTrace();
         }
