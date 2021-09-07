@@ -20,125 +20,97 @@ public class transferencias{
         this.driver= driver;
     }
 
-    private By menuOperaciones = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'OPERACIONES')]");
-    private By subMenuTransferencias = By.xpath("//form[@id='j_idt72']//div[@id='menuWebIbk']//a[contains(text(),'Transferencias')]");
-    private By EntreCuentasPropias = By.xpath("//form[@id='j_idt72']//div[@id='menuWebIbk']//a[contains(text(),'Transferencias')]//following-sibling::ul//a[contains(text(),'Entre cuentas propias')]");
-    private By tituloFormulario= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/h5/div");
-    private By seccionOperaciones = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[1]");
-    private By seccionTransferencias = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[2]");
-    private By seccionEntreCuentasPropias= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[3]");
-    private By tituloPaso1= By.xpath("//*[@id='operacion']/div/div[1]/div[2]");
-    private By tituloPaso2= By.xpath("//*[@id='subTitulo']");
-    private By tituloPaso3= By.xpath("");
+
+    private final By tituloFormulario= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/h5/div");
+    private final By seccionOperaciones = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[1]");
+    private final By seccionTransferencias = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[2]");
+    private final By seccionEntreCuentasPropias= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[3]");
+    private final By tituloPaso1= By.xpath("//*[@id='operacion']/div/div[1]/div[2]");
+    private final By tituloPaso2= By.xpath("//*[@id='subTitulo']");
+    private final By tituloPaso3= By.xpath("");
 
     //locators Paso 1
-    private By cuentaOrigenPaso1=By.xpath("//*[@id='cuenta-origen']");
-    private By cuentaDestinoPaso1= By.xpath("//*[@id='cuenta-destino']");
-    private By glosa = By.xpath("//*[@id='glosa']");
-    private By montoTransferencia= By.xpath("//*[@id='monto']");
-    private By siguientePaso1= By.xpath("//*[@id='operacion']/div/div[3]/div[3]/input");
+    private final By cuentaOrigenPaso1=By.xpath("//*[@id='cuenta-origen']");
+    private final By cuentaDestinoPaso1= By.xpath("//*[@id='cuenta-destino']");
+    private final By glosa = By.xpath("//*[@id='glosa']");
+    private final By montoTransferencia= By.xpath("//*[@id='monto']");
+    private final By siguientePaso1= By.xpath("//*[@id='operacion']/div/div[3]/div[3]/input");
 
     //Locators Paso 2
-    private By cuentaOrigenPaso2 = By.xpath("//*[@id='ctn-creditos']/div[1]/p[2]");
-    private By montoAtransferirPaso2 = By.xpath("//*[@id='ctn-creditos']/div[2]/span");
-    private By cuentaDestinoPaso2 = By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
-    private By glosaPaso2 = By.xpath("//*[@id='glosa']");
+    private final By cuentaOrigenPaso2 = By.xpath("//*[@id='ctn-creditos']/div[1]/p[2]");
+    private final By montoAtransferirPaso2 = By.xpath("//*[@id='ctn-creditos']/div[2]/span");
+    private final By cuentaDestinoPaso2 = By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
+    private final By glosaPaso2 = By.xpath("//*[@id='glosa']");
     //multimoneda
-    private By cuentaDestino_Paso2 = By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
-    private By glosa_Paso2 = By.xpath("//*[@id='glosa']");
-    private By tipoDeCambio_Paso2 = By.xpath("//*[@id='ctn-creditos']/div[6]/span");
-    private By montoEquivalente_Paso2 = By.xpath("//*[@id='ctn-creditos']/div[3]/span");
+    private final By cuentaDestino_Paso2 = By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
+    private final By glosa_Paso2 = By.xpath("//*[@id='glosa']");
+    private final By tipoDeCambio_Paso2 = By.xpath("//*[@id='ctn-creditos']/div[6]/span");
+    private final By montoEquivalente_Paso2 = By.xpath("//*[@id='ctn-creditos']/div[3]/span");
 
-    private By etiquetatipoCambio= By.xpath("//*[@id='ctn-creditos']/div[3]/p");
-    private By etiquetaTipoDeCambio= By.xpath("//*[@id='ctn-creditos']/div[6]/span");
-    private By botonConfirmarPaso2 = By.xpath("//*[@id='operacion']/div/div[5]/div[5]/a");
-
-
+    private final By etiquetatipoCambio= By.xpath("//*[@id='ctn-creditos']/div[3]/p");
+    private final By etiquetaTipoDeCambio= By.xpath("//*[@id='ctn-creditos']/div[6]/span");
+    private final By botonConfirmarPaso2 = By.xpath("//*[@id='operacion']/div/div[5]/div[5]/a");
 
     //Locatos Paso 3
-    private By tipoOperacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[1]/p[2]");
-    private By numeroDeReferenciaPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[2]/p[2]");
-    private By numeroDeOperacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[3]/p[2]");
-    private By fechaDePresentacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[4]/p[2]");
+    private final By tipoOperacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[1]/p[2]");
+    private final By numeroDeReferenciaPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[2]/p[2]");
+    private final By numeroDeOperacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[3]/p[2]");
+    private final By fechaDePresentacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[4]/p[2]");
 
-
-    private By cuentaOrigenPaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[5]/p[2]");
-    private By montoAtransferirPaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[6]/p[2]");
-    private By cuentaDestinoPaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[7]/p[2]");
-    private By glosaPaso3 = By.xpath("//*[@id='glosa']");
+    private final By cuentaOrigenPaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[5]/p[2]");
+    private final By montoAtransferirPaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[6]/p[2]");
+    private final By cuentaDestinoPaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[7]/p[2]");
+    private final By glosaPaso3 = By.xpath("//*[@id='glosa']");
     //multimoneda
-    private By montoEquivalentePaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[8]/p[2]");
-    private By glosa_Paso3 = By.xpath("//*[@id='glosa']");
-    private By tipoDeCambio_Paso3 = By.xpath("//*[@id='ctn-creditos']/div/div[9]/p[2]");
+    private final By montoEquivalentePaso3 = By.xpath("//*[@id='ctn-creditos']/div/div[8]/p[2]");
+    private final By glosa_Paso3 = By.xpath("//*[@id='glosa']");
+    private final By tipoDeCambio_Paso3 = By.xpath("//*[@id='ctn-creditos']/div/div[9]/p[2]");
 
     //Locartors
-    private By constancia_tipoOperacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[1]/span[2]");
-    private By constancia_numeroReferencia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[2]/span[2]");
-    private By constancia_numeroDeOperacion= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[3]/span[2]");
-    private By constancia_fechaDePresentacion= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[2]");
-    private By Constacncia_horadePresentacion= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[3]");
-    private By constancia_cuentaOrigen= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[2]/span[2]");
-    private By constancia_montoAtransferir = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[3]/span[2]");
-    private By constancia_cuentaDestino = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[1]/span[2]");
-    private By constancia_montoEquivalente= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[2]/span[2]");
-    private By constancia_tipoDeCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[3]/span[2]");
-    private By constancia_glosa= By.xpath("//*[@id='glosaModal']");
-    private By constancia_etiqueta=By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[2]/span[1]");
+    private final By constancia_tipoOperacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[1]/span[2]");
+    private final By constancia_numeroReferencia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[2]/span[2]");
+    private final By constancia_numeroDeOperacion= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[3]/span[2]");
+    private final By constancia_fechaDePresentacion= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[2]");
+    private final By Constacncia_horadePresentacion= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[3]");
+    private final By constancia_cuentaOrigen= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[2]/span[2]");
+    private final By constancia_montoAtransferir = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[3]/span[2]");
+    private final By constancia_cuentaDestino = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[1]/span[2]");
+    private final By constancia_montoEquivalente= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[2]/span[2]");
+    private final By constancia_tipoDeCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[3]/span[2]");
+    private final By constancia_glosa= By.xpath("//*[@id='glosaModal']");
+    private final By constancia_etiqueta=By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[2]/span[1]");
 
-    private By emailPara = By.xpath("//*[@id='txtEmailPara']");
-    private By emailasunto = By.xpath("//*[@id='txtEmailAsunto']");
+    String cuentaOrigenSeleccionadaPaso1;
+    String cuentaDestinoSeleccionadaPaso1;
+    String montoATransferirPaso1;
+    String glosaIngresadaPaso1;
 
-    private String cuentaOrigenSeleccionadaPaso1;
-    private String cuentaDestinoSeleccionadaPaso1;
-    private String montoATransferirPaso1;
-    private String glosaIngresadaPaso1;
+    String cuentaOrigenObtenidoPaso2;
+    String montoAtransferirObtenidoPaso2;
+    String cuentaDestinoObtenidoPaso2;
+    String glosaObtenidaPaso2;
+    String montoEquivalenteObtenidoPaso2;
+    String tipoDeCambioObtenidoPaso2;
 
-    private String cuentaOrigenObtenidoPaso2;
-    private String montoAtransferirObtenidoPaso2;
-    private String cuentaDestinoObtenidoPaso2;
-    private String glosaObtenidaPaso2;
-    private String montoEquivalenteObtenidoPaso2;
-    private String tipoDeCambioObtenidoPaso2;
+    String tipoOperacionObtenidoPaso3;
+    String numeroDeReferenciaObtenidoPaso3;
+    String numeroDeOperacionObtenidoPaso3;
+    String fechaDePresentacionObtenidoPaso3;
+    String horaDePresentacionObtenidoPaso3;
+    String cuentaOrigenObtenidoPaso3;
+    String montoAtransferirObtenidoPaso3;
+    String cuentaDestinoObtenidoPaso3;
+    String glosaObtenidoPaso3;
+    String montoEquivalenteObtenidoPaso3;
+    String tipoDeCambioObtenidoPaso3;
 
-    private String tipoOperacionObtenidoPaso3;
-    private String numeroDeReferenciaObtenidoPaso3;
-    private String numeroDeOperacionObtenidoPaso3;
-    private String fechaDePresentacionObtenidoPaso3;
-    private String horaDePresentacionObtenidoPaso3;
-    private String cuentaOrigenObtenidoPaso3;
-    private String montoAtransferirObtenidoPaso3;
-    private String cuentaDestinoObtenidoPaso3;
-    private String glosaObtenidoPaso3;
-    private String montoEquivalenteObtenidoPaso3;
-    private String tipoDeCambioObtenidoPaso3;
-
-    private String montoAtransferirObtenido_Paso2;
+    String montoAtransferirObtenido_Paso2;
 
     String monedaSoles= "S/";
     String monedaDolares= "US$";
 
     Utilities utilities = new Utilities();
 
-    public void ingresarAMenuTransferenciasEntreCuentasPropias(){
-        Actions Paso1 = new Actions(driver);
-        WebElement seleccionarMenuOperaciones = driver.findElement(menuOperaciones);
-        Paso1 .moveToElement(seleccionarMenuOperaciones).build().perform();
-
-        WebDriverWait wait = new WebDriverWait(driver,6000);
-        wait.until(ExpectedConditions.elementToBeClickable(subMenuTransferencias));
-
-        Actions Paso2 = new Actions(driver);
-        WebElement seleccionarSubMenuTransferencias = driver.findElement(subMenuTransferencias);
-        Paso2.moveToElement(seleccionarSubMenuTransferencias).perform();
-
-        WebDriverWait wait1 = new WebDriverWait(driver,6000);
-        wait1.until(ExpectedConditions.elementToBeClickable(EntreCuentasPropias));
-
-        Actions Paso3 = new Actions(driver);
-        WebElement seleccionarEntreCuentasPropias = driver.findElement(EntreCuentasPropias);
-        Paso3.moveToElement(seleccionarEntreCuentasPropias).perform();
-        seleccionarEntreCuentasPropias.click();
-    }
     public void validarCaracterisicasDeFormularioCargadoPaso1() {
 
         WebDriverWait wait = new WebDriverWait(driver,6000);

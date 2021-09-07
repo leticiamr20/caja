@@ -21,7 +21,7 @@ public class transferenciasEntreCuentasPropias extends BaseDriver{
     @Before
     public void metodosBefore() {
         utilities.loginPersonaIBK_usuario1("4", "16466306");
-        transferencias.ingresarAMenuTransferenciasEntreCuentasPropias();
+        utilities.ingresarAMenu("OPERACIONES","Transferencias","Entre cuentas propias");
     }
 
     @Test

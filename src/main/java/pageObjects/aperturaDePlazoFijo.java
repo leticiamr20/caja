@@ -20,29 +20,25 @@ public class aperturaDePlazoFijo {
         this.driver= driver;
     }
     Utilities utilities = new Utilities();
-    //Ingreso a apertura de plazo fijo
-    private By menuOperaciones = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'OPERACIONES')]");
-    private By subMenuPlazoFijo= By.xpath("//*[@id='j_idt74:1:j_idt81:0:j_idt83']");
-    private By aperturaDePlazoFijo= By.xpath("//*[@id='j_idt74:1:j_idt81:0:j_idt86:0:j_idt88']");
 
     //formulario paso 1
-    private By tituloformulario= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/h5");
-    private By seccionOperaciones= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[1]");
-    private By seccionAperturaPlazoFijo= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[2]");
-    private By tituloPasoApaso= By.xpath("//*[@id='subTitulo']");
+    private final By tituloformulario= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/h5");
+    private final By seccionOperaciones= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[1]");
+    private final By seccionAperturaPlazoFijo= By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[2]");
+    private final By tituloPasoApaso= By.xpath("//*[@id='subTitulo']");
 
 
     //localizadores Paso 1
-    private By cuentaOrigen_paso1= By.id("cuenta-select");
-    private By moneda_paso1 = By.id("moneda-select");
-    private By plazoEnDias_paso1= By.id("plazo-select");
-    private By modaliadDePagoDeInteres_paso1= By.id("modalidad-pago-select");
-    private By capital_paso1 = By.id("capital");
-    private By cuentaDeAbonoDeIntereses_paso1 = By.id("cuenta-abono-select");
-    private By email_paso1= By.id("email");
-    private By chekboxTerminosYcondiciones_paso1=By.xpath("//*[@id='operacion']/div/div[5]/div[1]/div/div[1]/ins");
-    private By chekboxTerminosYcondicionesDeLaCartilla_paso1=By.xpath("//*[@id='operacion']/div/div[5]/div[2]/div/div[1]/ins");
-    private By botonSiguiente_paso1= By.id("botonNext");
+    private final By cuentaOrigen_paso1= By.id("cuenta-select");
+    private final By moneda_paso1 = By.id("moneda-select");
+    private final By plazoEnDias_paso1= By.id("plazo-select");
+    private final By modaliadDePagoDeInteres_paso1= By.id("modalidad-pago-select");
+    private final By capital_paso1 = By.id("capital");
+    private final By cuentaDeAbonoDeIntereses_paso1 = By.id("cuenta-abono-select");
+    private final By email_paso1= By.id("email");
+    private final By chekboxTerminosYcondiciones_paso1=By.xpath("//*[@id='operacion']/div/div[5]/div[1]/div/div[1]/ins");
+    private final By chekboxTerminosYcondicionesDeLaCartilla_paso1=By.xpath("//*[@id='operacion']/div/div[5]/div[2]/div/div[1]/ins");
+    private final By botonSiguiente_paso1= By.id("botonNext");
 
     private String cuentaOrigenpaso1;
     private String monedapaso1;
@@ -67,130 +63,108 @@ public class aperturaDePlazoFijo {
 
 
     //localizadores Fijos Paso 2
-    private By cuentaOrigen_paso2= By.xpath("//*[@id='ctn-creditos']/div[1]/p[2]");
-    private By capital_paso2 = By.xpath("//*[@id='ctn-creditos']/div[2]/p[2]");
-    private By moneda_paso2 = By.xpath("//*[@id='ctn-creditos']/div[3]/p[2]");
-    private By plazoEnDias_paso2= By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
-    private By modaliadDePagoDeInteres_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[1]/p[2]");
+    private final By cuentaOrigen_paso2= By.xpath("//*[@id='ctn-creditos']/div[1]/p[2]");
+    private final By capital_paso2 = By.xpath("//*[@id='ctn-creditos']/div[2]/p[2]");
+    private final By moneda_paso2 = By.xpath("//*[@id='ctn-creditos']/div[3]/p[2]");
+    private final By plazoEnDias_paso2= By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
+    private final By modaliadDePagoDeInteres_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[1]/p[2]");
 
     //localizadores variables - Capitalizable al vencimiento, Disponible en cuenta-
-    private By tasaDeInteresAnual_Paso2 = By.xpath("//*[@id='operacion']/div/div[3]/div[2]/p[2]");
-    private By email_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[3]/p[2]");
+    private final By tasaDeInteresAnual_Paso2 = By.xpath("//*[@id='operacion']/div/div[3]/div[2]/p[2]");
+    private final By email_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[3]/p[2]");
 
-    private By tipoDeCambio_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[4]/p[2]");
-    private By montoEquivalente_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[4]/p[2]");
+    private final By tipoDeCambio_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[4]/p[2]");
+    private final By montoEquivalente_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[4]/p[2]");
 
     //localizadores variables - Abono en cuenta, Abonno mensual-
-    private By cuentaDeAbonoDeIntereses_paso2 = By.xpath("//*[@id='operacion']/div/div[3]/div[2]/p[2]");
-    private By tasadeInteresAnual_Paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[3]/p[2]");
-    private By eMail_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[4]/p[2]");
+    private final By cuentaDeAbonoDeIntereses_paso2 = By.xpath("//*[@id='operacion']/div/div[3]/div[2]/p[2]");
+    private final By tasadeInteresAnual_Paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[3]/p[2]");
+    private final By eMail_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[4]/p[2]");
 
-    private By tipodeCambio_paso2 = By.xpath("//*[@id='operacion']/div/div[3]/div[5]/p[2]");
-    private By montoequivalente_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[6]/p[2]");
+    private final By tipodeCambio_paso2 = By.xpath("//*[@id='operacion']/div/div[3]/div[5]/p[2]");
+    private final By montoequivalente_paso2= By.xpath("//*[@id='operacion']/div/div[3]/div[6]/p[2]");
 
-    private By botonConfirmar_paso2= By.id("botonNext");
+    private final By botonConfirmar_paso2= By.id("botonNext");
 
 
     //localizadores Fijos Paso 3
-    private By mensajeExitoso_Paso3= By.xpath("//*[@id='mensajeTransaccion']/div/p[2]");
-    private By formulario_paso3= By.xpath("//*[@id='subTitulo']");
+    private final By mensajeExitoso_Paso3= By.xpath("//*[@id='mensajeTransaccion']/div/p[2]");
+    private final By formulario_paso3= By.xpath("//*[@id='subTitulo']");
 
-    private By numeroDeReferencia_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[1]/p[2]");
-    private By numeroDeOperacion_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[2]/p[2]");
-    private By numeroDeContrato_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[3]/p[2]");
-    private By fechaDePresentacion_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[4]/p[2]");
-    private By horaDePresentacion_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[5]/p[2]");
-    private By numeroDeCuentaPlazoFijo_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[6]/p[2]");
-    private By capital_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[7]/p[2]");
-    private By moneda_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[8]/p[2]");
-    private By plazo_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[9]/p[2]");
-    private By cuentaDeAhorroOrigen_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[10]/p[2]");
-    private By modalidadDePagoDeInteres_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[11]/p[2]");
+    private final By numeroDeReferencia_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[1]/p[2]");
+    private final By numeroDeOperacion_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[2]/p[2]");
+    private final By numeroDeContrato_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[3]/p[2]");
+    private final By fechaDePresentacion_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[4]/p[2]");
+    private final By horaDePresentacion_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[5]/p[2]");
+    private final By numeroDeCuentaPlazoFijo_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[6]/p[2]");
+    private final By capital_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[7]/p[2]");
+    private final By moneda_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[8]/p[2]");
+    private final By plazo_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[9]/p[2]");
+    private final By cuentaDeAhorroOrigen_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[10]/p[2]");
+    private final By modalidadDePagoDeInteres_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[11]/p[2]");
 
     //localizadores variables
     //localizadores variables - Capitalizable al vencimiento, Disponible en cuenta-
-    private By tasadeIneteresAnual_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[13]/p[2]");
-    private By eMail_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[13]/p[2]");
-    private By fechadeApertura_paso3= By.xpath("//*[@id='j_idt175:fecApe']");
-    private By fechadeVencimiemto_paso3= By.xpath("//*[@id='j_idt178:fecVto']");
-    private By tasadeInteresAnual_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[12]/p[2]");
-    private By itf_paso3 = By.xpath("//*[@id='ctn-creditos']/div/div[16]/p[2]");
+    private final By tasadeIneteresAnual_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[13]/p[2]");
+    private final By eMail_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[13]/p[2]");
+    private final By fechadeApertura_paso3= By.xpath("//*[@id='j_idt175:fecApe']");
+    private final By fechadeVencimiemto_paso3= By.xpath("//*[@id='j_idt178:fecVto']");
+    private final By tasadeInteresAnual_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[12]/p[2]");
+    private final By itf_paso3 = By.xpath("//*[@id='ctn-creditos']/div/div[16]/p[2]");
 
-    private By tipodeCambio_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[18]/p[2]");
-    private By montodquivalente_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[19]/p[2]");
+    private final By tipodeCambio_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[18]/p[2]");
+    private final By montodquivalente_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[19]/p[2]");
 
     //localizadores variables - Abono en cuenta, Abonno mensual-
-    private By cuentaDeAbonoDeIntereses_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[12]/p[2]");
-    private By tasaDeIneteresAnual_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[13]/p[2]");
-    private By email_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[14]/p[2]");
-    private By fechaDeApertura_paso3= By.xpath("//*[@id='j_idt175:fecApe']");
-    private By fechaDeVencimiemto_paso3= By.xpath("//*[@id='j_idt178:fecVto']");
-    private By ITF_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[17]/p[2]");
+    private final By cuentaDeAbonoDeIntereses_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[12]/p[2]");
+    private final By tasaDeIneteresAnual_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[13]/p[2]");
+    private final By email_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[14]/p[2]");
+    private final By fechaDeApertura_paso3= By.xpath("//*[@id='j_idt175:fecApe']");
+    private final By fechaDeVencimiemto_paso3= By.xpath("//*[@id='j_idt178:fecVto']");
+    private final By ITF_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[17]/p[2]");
 
-    private By tipoDeCambio_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[18]/p[2]");
-    private By montoEquivalente_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[19]/p[2]");
+    private final By tipoDeCambio_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[18]/p[2]");
+    private final By montoEquivalente_paso3= By.xpath("//*[@id='ctn-creditos']/div/div[19]/p[2]");
 
     //localizadores fijos constancia
-    private By numeroDeReferencia_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[1]/td[1]/span[2]");
-    private By numeroDeOperacion_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[1]/td[2]/span[2]");
-    private By numeroDeContrato_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[1]/td[3]/span[2]");
-    private By fechaDePresentacion_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[2]/td[1]/span[2]");
-    private By horaDePresentacion_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[2]/td[2]/span[2]");
-    private By numeroDeCuentaPlazoFijo_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[2]/td[3]/span[2]");
-    private By capital_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[3]/td[1]/span[2]");
-    private By moneda_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[3]/td[2]/span[2]");
-    private By plazo_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[3]/td[3]/span[2]");
-    private By diasPlazo_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[3]/td[3]/span[3]");
-    private By cuentaDeAhorroOrigen_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[4]/td[1]/span[2]");
-    private By modalidadDePagoDeInteres_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[4]/td[2]/span[2]"); //CAPITAL.AL VMTO
+    private final By numeroDeReferencia_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[1]/td[1]/span[2]");
+    private final By numeroDeOperacion_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[1]/td[2]/span[2]");
+    private final By numeroDeContrato_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[1]/td[3]/span[2]");
+    private final By fechaDePresentacion_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[2]/td[1]/span[2]");
+    private final By horaDePresentacion_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[2]/td[2]/span[2]");
+    private final By numeroDeCuentaPlazoFijo_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[2]/td[3]/span[2]");
+    private final By capital_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[3]/td[1]/span[2]");
+    private final By moneda_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[3]/td[2]/span[2]");
+    private final By plazo_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[3]/td[3]/span[2]");
+    private final By diasPlazo_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[3]/td[3]/span[3]");
+    private final By cuentaDeAhorroOrigen_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[4]/td[1]/span[2]");
+    private final By modalidadDePagoDeInteres_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[4]/td[2]/span[2]"); //CAPITAL.AL VMTO
 
     //localizadores variables - Capitalizable al vencimiento, Disponible en cuenta-
-    private By tasadeInteresAnual_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[4]/td[3]/span[2]"); //falta$
-    private By eMail_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[1]/span[2]");
-    private By fechadeApertura_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[2]/span[2]");
-    private By fechadeVencimiemto_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[3]/span[2]");
-    private By Itf_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[1]/span[2]");
+    private final By tasadeInteresAnual_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[4]/td[3]/span[2]"); //falta$
+    private final By eMail_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[1]/span[2]");
+    private final By fechadeApertura_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[2]/span[2]");
+    private final By fechadeVencimiemto_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[3]/span[2]");
+    private final By Itf_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[1]/span[2]");
 
-    private By tipodeCambio_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[2]/span[2]");
-    private By montodquivalente_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[3]/span[2]");
+    private final By tipodeCambio_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[2]/span[2]");
+    private final By montodquivalente_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[3]/span[2]");
 
 
     //localizadores variables - Abono en cuenta, Abonno mensual-
-    private By cuentaDeAbonoDeIntereses_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[4]/td[3]/span[2]");
-    private By tasadeinteresAnual_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[1]/span[2]"); //falta %
-    private By email_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[2]/span[2]");
-    private By fechaDeApertura_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[3]/span[2]");
-    private By fechaDeVencimiemto_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[1]/span[2]");
-    private By ITF_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[2]/span[2]");
+    private final By cuentaDeAbonoDeIntereses_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[4]/td[3]/span[2]");
+    private final By tasadeinteresAnual_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[1]/span[2]"); //falta %
+    private final By email_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[2]/span[2]");
+    private final By fechaDeApertura_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[5]/td[3]/span[2]");
+    private final By fechaDeVencimiemto_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[1]/span[2]");
+    private final By ITF_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[2]/span[2]");
 
-    private By tipoDeCambio_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[3]/span[2]");
-    private By montoEquivalente_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[7]/td/span[2]");
+    private final By tipoDeCambio_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[6]/td[3]/span[2]");
+    private final By montoEquivalente_constancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table/tbody/tr[7]/td/span[2]");
 
-    private By enviarConstancia = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div[2]/a[1]");
-    private By emailPara =  By.xpath("//*[@id='txtEmailPara']");
-    private By emailasunto =  By.xpath("//*[@id='txtEmailAsunto']");
+    private final By enviarConstancia = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div[2]/a[1]");
 
 
-    //Ingresar a Plazo fijo
-    //public void loginUsuarioAperturaPlazoFijo() {
-    //    LoginPersonaIBK.loginPersonaIBK_usuario1("4", "16466306");
-    //}
-    public void ingresarAaperturaDePlazoFijoDesdeMenu() {
-        WebElement selecionarMenuOperaciones = driver.findElement(menuOperaciones);
-        selecionarMenuOperaciones.click();
-
-        Actions action = new Actions(driver);
-        WebElement seleccionarSubMenuPlazofijo = driver.findElement(subMenuPlazoFijo);
-        action.moveToElement(seleccionarSubMenuPlazofijo).build().perform();
-
-        WebDriverWait wait = new WebDriverWait(driver,6000);
-        wait.until(ExpectedConditions.elementToBeClickable(aperturaDePlazoFijo));
-
-        Actions action2 = new Actions(driver);
-        WebElement ingresarAaperturaDePlazoFijo = driver.findElement(aperturaDePlazoFijo);
-        action2.moveToElement(ingresarAaperturaDePlazoFijo).perform();
-        ingresarAaperturaDePlazoFijo.click();
-    }
     public void validarCaracterisicasDeFormularioCargadoPaso1() {
         WebDriverWait wait = new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.elementToBeClickable(tituloformulario));
@@ -312,8 +286,6 @@ public class aperturaDePlazoFijo {
             botonSiguiente.click();
 
         }
-
-
     }
     public void validarCaracterisicasDeFormularioCargadoPaso2() {
         WebDriverWait wait = new WebDriverWait(driver,5);
@@ -599,7 +571,6 @@ public class aperturaDePlazoFijo {
                 assertEquals(monto_equivalentePaso2,montoequivalentePaso3);
 
                 System.out.println("Validación ok en paso 3");
-
             }
         }
     }
@@ -737,43 +708,5 @@ public class aperturaDePlazoFijo {
             }
         }
     }
-    public void enviarConstancia(String correo, String asunto){
-        WebElement seleccionarEmailPara= driver.findElement(emailPara);
-        seleccionarEmailPara.sendKeys(correo);
-
-        WebElement seleccionarEmailAsunto= driver.findElement(emailasunto);
-        seleccionarEmailAsunto.sendKeys(asunto);
-
-        WebElement seleccionarBotonEnviar= driver.findElement(By.xpath("*//a[contains(text(),'ENVIAR')]"));
-        seleccionarBotonEnviar.click();
-
-    }
-    public void validarConformidadDeEnvio(){
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        String tituloConfirmacionObtenido = driver.findElement(By.xpath("//form[@id='j_idt72']//div[@id='dlgConfirmacion']/div[2]/h2")).getText();
-        String tituloConfirmacionEsperado= "CONFIRMACIÓN";
-        assertEquals(tituloConfirmacionEsperado,tituloConfirmacionObtenido);
-
-        String mensajeConfirmacionObtenido = driver.findElement(By.xpath("//*[@id='j_idt128']")).getText();
-        String mensajeConfirmacionEsperado= "La constancia fue enviada con éxito";
-        assertEquals(mensajeConfirmacionEsperado,mensajeConfirmacionObtenido);
-
-        String botonAceptarObtenido = driver.findElement(By.xpath("//*[@id='dlgConfirmacion']/div[2]/input")).getAttribute("value");
-        String botonAceptarEsperado= "Aceptar";
-        assertEquals(botonAceptarEsperado,botonAceptarObtenido);
-
-        WebElement botonAceptar= driver.findElement(By.xpath("//*[@id='dlgConfirmacion']/div[2]/input"));
-        botonAceptar.click();
-    }
-
-
-
-
 
 }

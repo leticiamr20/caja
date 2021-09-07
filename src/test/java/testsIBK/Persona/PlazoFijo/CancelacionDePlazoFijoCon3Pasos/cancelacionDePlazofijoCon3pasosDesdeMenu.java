@@ -1,4 +1,4 @@
-package testsIBK.Persona.TestPlazoFijo.CancelacionDePlazoFijoCon3Pasos;
+package testsIBK.Persona.PlazoFijo.CancelacionDePlazoFijoCon3Pasos;
 
 import common.BaseDriver;
 import org.junit.After;
@@ -8,7 +8,7 @@ import pageObjects.cancelacionDePlazoFijo;
 import org.junit.Test;
 import util.Utilities;
 
-public class cancelacionDePlazoFijoCon3pasosDesdeAccesoDirecto extends BaseDriver {
+public class cancelacionDePlazofijoCon3pasosDesdeMenu extends BaseDriver{
 
     cancelacionDePlazoFijo cancelacionDePlazoFijo =  new cancelacionDePlazoFijo(driver);
     Utilities utilities = new Utilities();
@@ -22,28 +22,35 @@ public class cancelacionDePlazoFijoCon3pasosDesdeAccesoDirecto extends BaseDrive
     @Before
     public void metodosBefore(){
         utilities.loginPersonaIBK_usuario1("4", "16466306");
+        utilities.ingresarAMenu("OPERACIONES","Plazo Fijo","Con abono a cuenta propia");
     }
 
     @Test
-    public void cancelarCuentaDePlazoFijoSinFondoCon3pasos() {
-
-        //utilities.loginPersonaIBK_usuario1("4", "16466306");
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982310");
-        cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
-        cancelacionDePlazoFijo.cancelarCuentaPlazoFijoconEnCero();
-        cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaDePlazoFijoSinFondoCon3pasos");
-        utilities.validarConformidadDeEnvio();
-    }
-
-    @Test
-    public void cancelarCuentaPlazofijoDeSolesASolesCon3pasos(){
-        //utilities.loginPersonaIBK_usuario1("4", "16466306");
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9982483");
-        cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
+    public void cancelacionDePlazofijoDeSolesASolesCon3pasos(){
         //Paso 1
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
-        cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210010000792");
+        cancelacionDePlazoFijo.completarPaso1De3ConFondo("310019982593","210010021742");
+        //PASO 2
+        cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
+        cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
+        cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso2();
+        //Paso 2
+        cancelacionDePlazoFijo.completarPaso2De3();
+        //PASO 3
+        cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
+        cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
+        cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
+        cancelacionDePlazoFijo.validarDatosDeModalConstancia();
+        utilities.enviarConstancia("leticia.moreno@encora.com","cancelacionDePlazofijoDeSolesASolesCon3pasos");
+        utilities.validarConformidadDeEnvio();
+
+    }
+
+    @Test
+    public void cancelacionDePlazofijoDeDolaresAdolaresCon3pasos(){
+        //PASO 1
+        cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
+        cancelacionDePlazoFijo.completarPaso1De3ConFondo("310029979450","210029556371");
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
@@ -54,18 +61,15 @@ public class cancelacionDePlazoFijoCon3pasosDesdeAccesoDirecto extends BaseDrive
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeSolesASolesCon3pasos");
+        utilities.enviarConstancia("leticia.moreno@encora.com","cancelacionDePlazofijoDeDolaresAdolaresCon3pasos");
         utilities.validarConformidadDeEnvio();
-    }
+      }
 
     @Test
-    public void cancelarCuentaPlazofijoDeDolaresADolaresCon3pasos(){
-        //utilities.loginPersonaIBK_usuario1("4", "16466306");
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-02-9979439");
-        cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
-        //Paso 1
+    public void cancelacionDePlazoFijoDeDolaresAsolesCon3Pasos(){
+        //PASO 1
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
-        cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210029556371");
+        cancelacionDePlazoFijo.completarPaso1De3ConFondo("310029979465","210010021742");
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
@@ -76,19 +80,15 @@ public class cancelacionDePlazoFijoCon3pasosDesdeAccesoDirecto extends BaseDrive
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeDolaresADolaresCon3pasos");
+        utilities.enviarConstancia("leticia.moreno@encora.com","cancelacionDePlazoFijoDeDolaresAsolesCon3Pasos");
         utilities.validarConformidadDeEnvio();
-
     }
 
     @Test
-    public void cancelarCuentaPlazofijoDeDolaresASolesCon3pasos(){
-        //utilities.loginPersonaIBK_usuario1("4", "16466306");
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-02-9979444");
-        cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
-        //Paso 1
+    public void cancelacionDePlazoFijoDeSolesADolaresCon3Pasos(){
+        //PASO 1
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
-        cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210010021742");
+        cancelacionDePlazoFijo.completarPaso1De3ConFondo("310019982829","210029556371");
         //PASO 2
         cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
@@ -99,32 +99,8 @@ public class cancelacionDePlazoFijoCon3pasosDesdeAccesoDirecto extends BaseDrive
         cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
         cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
         cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeDolaresASolesCon3pasos");
+        utilities.enviarConstancia("leticia.moreno@encora.com","cancelacionDePlazoFijoDeSolesADolaresCon3Pasos");
         utilities.validarConformidadDeEnvio();
-
-    }
-
-    @Test
-    public void cancelarCuentaPlazofijoDeSolesADolaresCon3pasos(){
-        //utilities.loginPersonaIBK_usuario1("4", "16466306");
-        cancelacionDePlazoFijo.ingresarACancelacionDePlazoFijoDesdeAccesoDirecto("310-01-9983450");
-        cancelacionDePlazoFijo.seleccionarTipoTransferenciaDesdeModal();
-        //Paso 1
-        cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso1();
-        cancelacionDePlazoFijo.completarPaso1De3desdeAccesoDirecto("210029556371");
-        //PASO 2
-        cancelacionDePlazoFijo.validarCaracterisicasDeFormularioCargadoPaso2();
-        cancelacionDePlazoFijo.validarDatosDeCancelacionPaso2();
-        cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso2();
-        cancelacionDePlazoFijo.completarPaso2De3();
-        //PASO 3
-        cancelacionDePlazoFijo.validarDatosAdicionalesPaso3De3();
-        cancelacionDePlazoFijo.validarDatosDeCancelacionPaso3();
-        cancelacionDePlazoFijo.validarDatosDeDatosDelAbonoPaso3();
-        cancelacionDePlazoFijo.validarDatosDeModalConstancia();
-        utilities.enviarConstancia("leticia.moreno@avantica.com","cancelarCuentaPlazofijoDeSolesADolaresCon3pasos");
-        utilities.validarConformidadDeEnvio();
-
     }
 
     @After

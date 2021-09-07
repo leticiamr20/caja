@@ -3,6 +3,7 @@ package util;
 import common.BaseDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,10 +13,10 @@ import static org.junit.Assert.assertEquals;
 import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
 
 public class Utilities extends BaseDriver {
-    private By tipotarjeta= By.id("panel-steps:login-card-select");
-    private By numerotarjeta = By.xpath("//*[@id='panel-steps:login-card-number']");
-    private By emailPara =  By.xpath("//*[@id='txtEmailPara']");
-    private By emailasunto =  By.xpath("//*[@id='txtEmailAsunto']");
+    private final By tipotarjeta= By.id("panel-steps:login-card-select");
+    private final By numerotarjeta = By.xpath("//*[@id='panel-steps:login-card-number']");
+    private final By emailPara =  By.xpath("//*[@id='txtEmailPara']");
+    private final By emailasunto =  By.xpath("//*[@id='txtEmailAsunto']");
 
     public void loginPersonaIBK_usuario1(String tarjetaSelect, String numeroTarjeta){
 
@@ -74,7 +75,7 @@ public class Utilities extends BaseDriver {
 
         Screen screen = new Screen();
         Pattern pattern;
-        pattern= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\CAJA\\caja\\src\\main\\resources\\imagenes\\tecla1.PNG");
+        pattern= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\proyecto Ago 08\\caja\\src\\main\\resources\\imagenes\\tecla1.PNG");
 
         try {
             screen.click(pattern);
@@ -92,7 +93,7 @@ public class Utilities extends BaseDriver {
     public void ingresarclavede6(){
         Screen screen = new Screen();
         Pattern pattern;
-        pattern= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\CAJA\\caja\\src\\main\\resources\\imagenes\\tecla1Clave6.PNG");
+        pattern= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\proyecto Ago 08\\caja\\src\\main\\resources\\imagenes\\tecla1Clave6.PNG");
         try {
             screen.click(pattern);
             screen.click(pattern);
@@ -139,9 +140,63 @@ public class Utilities extends BaseDriver {
         botonAceptar.click();
     }
 
+    public void ingresarAMenu(String menu, String sub_menu, String opcionMenu){
+        By menuIBK = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'"+menu+"')]");
+        By submenu = By.xpath("//form[@id='j_idt72']//div[@id='menuWebIbk']//a[contains(text(),'"+sub_menu+"')]");
+        By opcionmenu = By.xpath("//div[@id='menuWebIbk']//a[contains(text(),'"+sub_menu+"')]//following-sibling::ul//a[contains(text(),'" +opcionMenu+"')]");
 
+        if (opcionMenu.isEmpty()){
 
+            Actions actionMenu = new Actions(driver);
+            WebElement selecionarMenu = driver.findElement(menuIBK);
+            actionMenu.moveToElement(selecionarMenu).build().perform();
 
+            WebDriverWait waitsubmenu = new WebDriverWait(driver,6000);
+            waitsubmenu.until(ExpectedConditions.visibilityOfElementLocated(submenu));
+
+            Actions action = new Actions(driver);
+            WebElement seleccionarSubmenu = driver.findElement(submenu);
+            action.moveToElement(seleccionarSubmenu).build().perform();
+            seleccionarSubmenu.click();
+
+        }else  {
+
+            Actions actionMenu = new Actions(driver);
+            WebElement selecionarMenu = driver.findElement(menuIBK);
+            actionMenu.moveToElement(selecionarMenu).build().perform();
+
+            WebDriverWait waitsubmenu = new WebDriverWait(driver,6000);
+            waitsubmenu.until(ExpectedConditions.visibilityOfElementLocated(submenu));
+
+            Actions action = new Actions(driver);
+            WebElement seleccionarSubmenu = driver.findElement(submenu);
+            action.moveToElement(seleccionarSubmenu).build().perform();
+            seleccionarSubmenu.click();
+
+            WebDriverWait wait = new WebDriverWait(driver,6000);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(opcionmenu));
+
+            //Actions action2 = new Actions(driver);
+            WebElement ingresarAopcion= driver.findElement(opcionmenu);
+            //action2.moveToElement(ingresarAopcion).perform();
+
+            ingresarAopcion.click();
+
+        }
+
+    }
+
+    public void checkBox(){
+        Screen screen1 = new Screen();
+        Pattern pattern;
+        pattern= new Pattern("C:\\Users\\leticia.moreno\\Desktop\\proyecto Ago 08\\caja\\src\\main\\resources\\imagenes\\checkBox.PNG");
+        try {
+            screen1.click(pattern);
+
+        } catch (FindFailed findFailed) {
+            findFailed.printStackTrace();
+        }
+    }
 
 }
 

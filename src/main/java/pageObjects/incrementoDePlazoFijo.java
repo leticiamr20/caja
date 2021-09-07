@@ -24,23 +24,20 @@ public class incrementoDePlazoFijo {
     }
     Utilities utilities = new Utilities();
 
-    private By menuOperaciones = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'OPERACIONES')]");
-    private By subMenuPlazoFijo = By.xpath("//form[@id='j_idt72']//div[@id='menuWebIbk']//a[contains(text(),'Plazo Fijo')]");
-    private By incrementoDePlazoFijo = By.xpath("//form[@id='j_idt72']//div[@id='menuWebIbk']//a[contains(text(),'Plazo Fijo')]//following-sibling::ul//a[contains(text(),'Incremento de plazo fijo')]");
-    private By tituloFormulario= By.xpath("//*[@id='operacion']/div[1]/div/h5");
-    private By seccionOperaciones = By.xpath("//*[@id='operacion']/div[1]/div/ol/li[1]");
-    private By seccionIncrementoDePlazoFijo = By.xpath("//*[@id='operacion']/div[1]/div/ol/li[2]");
-    private By botonNext = By.xpath("//*[@id='botonNext']");
-    private By pantallaSelección= By.xpath("//*[@id='ctn-creditos']/p");
-    private By tituloPaso= By.xpath("//*[@id='subTitulo']");
+    private final By tituloFormulario= By.xpath("//*[@id='operacion']/div[1]/div/h5");
+    private final By seccionOperaciones = By.xpath("//*[@id='operacion']/div[1]/div/ol/li[1]");
+    private final By seccionIncrementoDePlazoFijo = By.xpath("//*[@id='operacion']/div[1]/div/ol/li[2]");
+    private final By botonNext = By.xpath("//*[@id='botonNext']");
+    private final By pantallaSelección= By.xpath("//*[@id='ctn-creditos']/p");
+    private final By tituloPaso= By.xpath("//*[@id='subTitulo']");
 
     //Paso1
-    private By cuentaDePlazoFijoPaso1= By.id("cuenta-plazo");
-    private By cuentaDeAhorroOrigenPaso1= By.id("cuenta-origen");
-    private By incrementoDeCapitalPaso1= By.id("monto");
-    private By botonSiguientePaso1=By.xpath("//*[@id='operacion']/div/div[5]/input");
-    private By cuentaDePlazoFijoSeleccionado= By.xpath("//*[@id='operacion']/div/div[3]/div[1]/div/button/span[1]");
-    private By cuentaDeAhorroOrigenSeleccionado = By.xpath("//*[@id='operacion']/div/div[4]/div[1]/div/button/span[1]");
+    private final By cuentaDePlazoFijoPaso1= By.id("cuenta-plazo");
+    private final By cuentaDeAhorroOrigenPaso1= By.id("cuenta-origen");
+    private final By incrementoDeCapitalPaso1= By.id("monto");
+    private final By botonSiguientePaso1=By.xpath("//*[@id='operacion']/div/div[5]/input");
+    private final By cuentaDePlazoFijoSeleccionado= By.xpath("//*[@id='operacion']/div/div[3]/div[1]/div/button/span[1]");
+    private final By cuentaDeAhorroOrigenSeleccionado = By.xpath("//*[@id='operacion']/div/div[4]/div[1]/div/button/span[1]");
     //variables
     String saldoEnCuentaPlazoFijo;
     String cadenaTotal;
@@ -49,15 +46,13 @@ public class incrementoDePlazoFijo {
     String ctaAhorroOrigenParam;
     String incrementoParam;
 
-
-
     //Paso 2
-    private By cuentaDePlazoFijoPaso2 = By.xpath("//*[@id='ctn-creditos']/div[1]/p[2]");
-    private By cuentaDeAhorroOrigenPaso2 = By.xpath("//*[@id='ctn-creditos']/div[3]/p[2]");
-    private By incrementoDeCapitalPaso2 = By.xpath("//*[@id='ctn-creditos']/div[2]/p[2]");
-    private By montoEquivalentePaso2 = By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
-    private By tipoDeCambioPaso2= By.xpath("//*[@id='ctn-creditos']/div/p[2]/span");
-    private By botonConfirmar=  By.xpath("//*[@id='operacion']/div/div[5]/div[5]/a");
+    private final By cuentaDePlazoFijoPaso2 = By.xpath("//*[@id='ctn-creditos']/div[1]/p[2]");
+    private final By cuentaDeAhorroOrigenPaso2 = By.xpath("//*[@id='ctn-creditos']/div[3]/p[2]");
+    private final By incrementoDeCapitalPaso2 = By.xpath("//*[@id='ctn-creditos']/div[2]/p[2]");
+    private final By montoEquivalentePaso2 = By.xpath("//*[@id='ctn-creditos']/div[4]/p[2]");
+    private final By tipoDeCambioPaso2= By.xpath("//*[@id='ctn-creditos']/div/p[2]/span");
+    private final By botonConfirmar=  By.xpath("//*[@id='operacion']/div/div[5]/div[5]/a");
 
     //variables
     String cadenacuentaahorroorigen;
@@ -65,35 +60,36 @@ public class incrementoDePlazoFijo {
     String tipoDeCambio;
 
     //Paso 3
-    private By tipoPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[1]/p[2]");
-    private By numeroReferenciaPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[2]/p[2]");
-    private By numeroDeOperacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[3]/p[2]");
-    private By fechaDePresentacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[4]/p[2]");
-    private By nroDeCuentaPlazoFijoPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[5]/p[2]");
-    private By fechaAperturaPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[6]/p[2]");
-    private By fechaDeVencimientoPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[7]/p[2]");
-    private By plazoPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[8]/p[2]");
-    private By tasaDeInteresAnualPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[9]/p[2]");
-    private By salMinDeEquilibrioPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[10]/p[2]");
+    private final By tipoPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[1]/p[2]");
+    private final By numeroReferenciaPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[2]/p[2]");
+    private final By numeroDeOperacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[3]/p[2]");
+    private final By fechaDePresentacionPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[4]/p[2]");
+    private final By nroDeCuentaPlazoFijoPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[5]/p[2]");
+    private final By fechaAperturaPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[6]/p[2]");
+    private final By fechaDeVencimientoPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[7]/p[2]");
+    private final By plazoPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[8]/p[2]");
+    private final By tasaDeInteresAnualPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[9]/p[2]");
+    private final By salMinDeEquilibrioPaso3= By.xpath("//*[@id='ctn-creditos']/div/div[10]/p[2]");
 
-    private By capitalAnteriorPaso3= By.xpath("//*[@id='operacion']/div[5]/div[1]/p[2]");
-    private By incrementoDeCapitalPaso3= By.xpath("//*[@id='operacion']/div[5]/div[2]/p[2]");
-    private By capitalActualPaso3= By.xpath("//*[@id='operacion']/div[5]/div[3]/p[2]");
-    private By interesDisponiblePaso3= By.xpath("//*[@id='operacion']/div[5]/div[4]/p[2]");
-    private By interesPagadoPaso3= By.xpath("//*[@id='operacion']/div[6]/div/p[2]");
+    private final By capitalAnteriorPaso3= By.xpath("//*[@id='operacion']/div[5]/div[1]/p[2]");
+    private final By incrementoDeCapitalPaso3= By.xpath("//*[@id='operacion']/div[5]/div[2]/p[2]");
+    private final By capitalActualPaso3= By.xpath("//*[@id='operacion']/div[5]/div[3]/p[2]");
+    private final By interesDisponiblePaso3= By.xpath("//*[@id='operacion']/div[5]/div[4]/p[2]");
+    private final By interesPagadoPaso3= By.xpath("//*[@id='operacion']/div[6]/div/p[2]");
 
-    private By interesAlVencimientoPaso3= By.xpath("//*[@id='operacion']/div[8]/div[1]/p[2]");
-    private By interespordiasPaso3= By.xpath("//*[@id='operacion']/div[8]/div[2]/p[2]");
+    private final By interesAlVencimientoPaso3= By.xpath("//*[@id='operacion']/div[8]/div[1]/p[2]");
+    private final By interespordiasPaso3= By.xpath("//*[@id='operacion']/div[8]/div[2]/p[2]");
 
-    private By cuentaDeAhorroOrigenPaso3= By.xpath("//*[@id='operacion']/div[10]/div[1]/p[2]");
-    private By montoEquivalentePaso3= By.xpath("//*[@id='operacion']/div[10]/div[2]/p[2]");
-    private By tipoDeCambioPaso3= By.xpath("//*[@id='operacion']/div[10]/div[3]/p[2]");
+    private final By cuentaDeAhorroOrigenPaso3= By.xpath("//*[@id='operacion']/div[10]/div[1]/p[2]");
+    private final By montoEquivalentePaso3= By.xpath("//*[@id='operacion']/div[10]/div[2]/p[2]");
+    private final By tipoDeCambioPaso3= By.xpath("//*[@id='operacion']/div[10]/div[3]/p[2]");
 
     //variables
     String tipo_paso3;
     String numeroReferencia_paso3;
     String numeroDeOperacion_paso3;
     String fechaDePresentacion_paso3;
+    String horaDePresentacion_paso3;
     String fechaApertura_paso3;
     String fechaDeVencimiento_paso3;
     String plazo_paso3;
@@ -111,57 +107,35 @@ public class incrementoDePlazoFijo {
     String montoEquivalente_paso3;
     String tipoDeCambio_paso3;
 
-    private By enviarConstancia = By.xpath("//*[@id='j_idt158']");
+    private final By enviarConstancia = By.xpath("//*[@id='j_idt158']");
 
 
-    private By tipoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[1]/span[2]");
-    private By numeroReferenciaConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[2]/span[2]");
-    private By numeroDeOperacionConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[3]/span[2]");
-    private By fechaDePresentacionConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[2]");
-    private By horaDePresentacionConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[3]");
-    private By nroDeCuentaPlazoFijoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[2]/span[2]");
-    private By fechaAperturaConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[3]/span[2]");
-    private By fechaDeVencimientoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[1]/span[2]");
-    private By plazoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[2]/span[2]");
-    private By tasaDeInteresAnualConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[3]/span[2]");
-    private By salMinDeEquilibrioConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[4]/td/span[2]");
+    private final By tipoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[1]/span[2]");
+    private final By numeroReferenciaConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[2]/span[2]");
+    private final By numeroDeOperacionConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[1]/td[3]/span[2]");
+    private final By fechaDePresentacionConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[2]");
+    private final By horaDePresentacionConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[1]/span[3]");
+    private final By nroDeCuentaPlazoFijoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[2]/span[2]");
+    private final By fechaAperturaConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[2]/td[3]/span[2]");
+    private final By fechaDeVencimientoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[1]/span[2]");
+    private final By plazoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[2]/span[2]");
+    private final By tasaDeInteresAnualConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[3]/td[3]/span[2]");
+    private final By salMinDeEquilibrioConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr[4]/td/span[2]");
 
-    private By capitalAnteriorConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[1]/span[2]");
-    private By incrementoDeCapitalConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[2]/span[2]");
-    private By capitalActualConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[3]/span[2]");
-    private By interesDisponibleConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[1]/span[2]");
-    private By interesPagadoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[2]/span[2]");
+    private final By capitalAnteriorConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[1]/span[2]");
+    private final By incrementoDeCapitalConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[2]/span[2]");
+    private final By capitalActualConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[3]/span[2]");
+    private final By interesDisponibleConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[1]/span[2]");
+    private final By interesPagadoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[2]/span[2]");
 
-    private By interesAlVencimientoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[1]/span[2]");
-    private By interespordiasConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[2]/span[2]");
+    private final By interesAlVencimientoConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[1]/span[2]");
+    private final By interespordiasConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[2]/span[2]");
 
-    private By cuentaDeAhorroOrigenConstancia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[4]/tbody/tr/td[1]/span[2]");
-    private By montoEquivalenteConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[4]/tbody/tr/td[2]/span[2]");
-    private By tipoDeCambioConstancia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[4]/tbody/tr/td[3]/span[2]");
-
-
+    private final By cuentaDeAhorroOrigenConstancia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[4]/tbody/tr/td[1]/span[2]");
+    private final By montoEquivalenteConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[4]/tbody/tr/td[2]/span[2]");
+    private final By tipoDeCambioConstancia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[4]/tbody/tr/td[3]/span[2]");
 
 
-    public void ingresarAincrementoDePlazoFijoDesdeMenu(){
-        Actions Paso1 = new Actions(driver);
-        WebElement seleccionarMenuOperaciones = driver.findElement(menuOperaciones);
-        Paso1 .moveToElement(seleccionarMenuOperaciones).build().perform();
-
-        WebDriverWait wait = new WebDriverWait(driver,6000);
-        wait.until(ExpectedConditions.elementToBeClickable(subMenuPlazoFijo));
-
-        Actions Paso2 = new Actions(driver);
-        WebElement seleccionarSubMenuPlazoFijo = driver.findElement(subMenuPlazoFijo);
-        Paso2.moveToElement(seleccionarSubMenuPlazoFijo).perform();
-
-        WebDriverWait wait1 = new WebDriverWait(driver,6000);
-        wait1.until(ExpectedConditions.elementToBeClickable(incrementoDePlazoFijo));
-
-        Actions Paso3 = new Actions(driver);
-        WebElement seleccionarIncrementoDePlazoFijo = driver.findElement(incrementoDePlazoFijo);
-        Paso3.moveToElement(seleccionarIncrementoDePlazoFijo).perform();
-        seleccionarIncrementoDePlazoFijo.click();
-    }
     public void validarFormularioDeSeleccionOperacion(){
 
         WebDriverWait wait = new WebDriverWait(driver,6000);
@@ -224,17 +198,13 @@ public class incrementoDePlazoFijo {
         String saldoFinal = saldo.substring(0, saldo.length()-1);
         saldoEnCuentaPlazoFijo= saldoFinal;
 
-
-
         //Incremento de capital
         WebElement incremento_capital= driver.findElement(incrementoDeCapitalPaso1);
         incremento_capital.sendKeys(incremento);
 
         WebElement botonSiguiente= driver.findElement(botonSiguientePaso1);
         botonSiguiente.click();
-
     }
-
     public void paso2(){
         String validarTituloFormulario= driver.findElement(tituloPaso).getText();
         String seccionTituloFormularioEsperado="CONFIRMAR INCREMENTO - CLAVE\n" +
@@ -256,7 +226,6 @@ public class incrementoDePlazoFijo {
             assertEquals(ctaAhorroOrigenParam,cuentaDeAhorroOrigenObtenidoPaso2);
 
             System.out.println("operacion unimoneda soles en cuenta de PF sin fondo");
-
 
         } else if(cadenaTotal.contains("US$") &&  cadenacuentaahorroorigen.contains("US$")){
             String cuentaDePlazoFijoObtenidoPaso2 = driver.findElement(cuentaDePlazoFijoPaso2).getText();
@@ -340,6 +309,7 @@ public class incrementoDePlazoFijo {
             assertNotNull(numeroDeoperacionObtenidoPaso3);
 
             String fechaDePresentacionObtenidoPaso3 = driver.findElement(fechaDePresentacionPaso3).getText();
+
             fechaDePresentacion_paso3 = fechaDePresentacionObtenidoPaso3.substring(0,10);
             assertNotNull(fechaDePresentacionObtenidoPaso3);
 
@@ -423,7 +393,6 @@ public class incrementoDePlazoFijo {
                 assertNotNull(tipoDeCambioObtenidoPaso3);
             }
     }
-
     public void validarDatosDeEnvio(){
         WebElement EnviarConstancia = driver.findElement(enviarConstancia);
         EnviarConstancia.click();

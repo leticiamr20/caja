@@ -1,6 +1,5 @@
 package pageObjects;
 
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,166 +14,134 @@ public class cancelacionDePlazoFijo {
 
     public static WebDriver driver;
 
-    //loginPersonaIBK LoginPersonaIBK = new loginPersonaIBK();
     Utilities  utilities = new Utilities();
-
 
     public cancelacionDePlazoFijo (WebDriver driver){
         this.driver= driver;
     }
-    private By menuOperaciones = By.xpath("//form[@id='j_idt72']//div[@class='menu-groups']//a[contains(text(),'OPERACIONES')]");
-    private By subMenuPlazoFijo= By.xpath("//*[@id='j_idt74:1:j_idt81:0:j_idt83']");
-    private By conAbonoCuentaPropia = By.xpath("//*[@id='j_idt74:1:j_idt81:0:j_idt86:2:j_idt91:0:j_idt93']");
 
-    private By tituloformulario = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/h5");
-    private By seccionOperaciones = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[1]");
-    private By seccionPlazoFijo = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[2]");
-    private By seccionCancelaciondePlazoFijo = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[3]");
-    private By seccionConAbonoAcuentaPropia = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[4]");
-    private By tituloPaso1 = By.xpath("//*[@id='subTitulo']");
-    private By paso1De3 = By.xpath("//*[@id='subTitulo']/div");
+    private final By tituloformulario = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/h5");
+    private final By seccionOperaciones = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[1]");
+    private final By seccionPlazoFijo = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[2]");
+    private final By seccionCancelaciondePlazoFijo = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[3]");
+    private final By seccionConAbonoAcuentaPropia = By.xpath("//*[@id='operacion']/div/div[1]/div[1]/div/ol/li[4]");
+    private final By tituloPaso1 = By.xpath("//*[@id='subTitulo']");
+    private final By paso1De3 = By.xpath("//*[@id='subTitulo']/div");
 
-    private By cuentaAcancelar = By.xpath("//form[@id='fixed-term-cancellation-ownaccount-form']//div[@id='operacion']//div[@id='ctn-creditos']//select[@id='cuenta-origen']");
-    private By cuentaDestino= By.xpath("//form[@id='fixed-term-cancellation-ownaccount-form']//div[@id='operacion']//select[@id='cuenta-destino']");
-    private By siguientePaso1 = By.xpath("//*[@id='botonNext']");
+    private final By cuentaAcancelar = By.xpath("//form[@id='fixed-term-cancellation-ownaccount-form']//div[@id='operacion']//div[@id='ctn-creditos']//select[@id='cuenta-origen']");
+    private final By cuentaDestino= By.xpath("//form[@id='fixed-term-cancellation-ownaccount-form']//div[@id='operacion']//select[@id='cuenta-destino']");
+    private final By siguientePaso1 = By.xpath("//*[@id='botonNext']");
 
     //PASO 2
     //Confirmar cancelacion - clave
-    private By cuentaAcancelarPaso2= By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[1]/p");
-    private By cuentaAcancelarEnceroPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div/p");
-    private By importeDeDocumentosPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[2]/p");
-    private By interesCalculadoAlaTasaVigentePositivoPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[3]/p");
-    private By toolTipPaso2= By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[3]/label/i");
-    private By interesPorCancelacionAntesDePlazoPaso2= By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[4]/p");
-    private By interesCalculadoAlaTasaVigenteNegativoPaso2 = By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[1]/p");
-    private By montoDeCancelacionPaso2= By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[2]/p");
-    private By ITFPaso2= By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[3]/p");
+    private final By cuentaAcancelarPaso2= By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[1]/p");
+    private final By cuentaAcancelarEnceroPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div/p");
+    private final By importeDeDocumentosPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[2]/p");
+    private final By interesCalculadoAlaTasaVigentePositivoPaso2 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[3]/p");
+    private final By toolTipPaso2= By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[3]/label/i");
+    private final By interesPorCancelacionAntesDePlazoPaso2= By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[4]/p");
+    private final By interesCalculadoAlaTasaVigenteNegativoPaso2 = By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[1]/p");
+    private final By montoDeCancelacionPaso2= By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[2]/p");
+    private final By ITFPaso2= By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[3]/p");
     //Validación de datos del abono
-    private By cuentaDestinoPaso2= By.xpath("//*[@id='idDatosAbonoFirstLine']/div/p");
-    private By montoAtransferirPaso2= By.xpath("//*[@id='idDatosAbonoFirstLine']/span/p");
-    private By montoATransferirMultimonedaPaso2= By.xpath("//*[@id='idDatosAbonoFirstLine']/span[3]/p");
+    private final By cuentaDestinoPaso2= By.xpath("//*[@id='idDatosAbonoFirstLine']/div/p");
+    private final By montoAtransferirPaso2= By.xpath("//*[@id='idDatosAbonoFirstLine']/span/p");
+    private final By montoATransferirMultimonedaPaso2= By.xpath("//*[@id='idDatosAbonoFirstLine']/span[3]/p");
     //Completando información solitada
-    private By clavede6 = By.xpath("//*[@id='key-3']");
-    private By botonConfirmar = By.xpath("//*[@id='botonNext']");
+    private final By botonConfirmar = By.xpath("//*[@id='botonNext']");
 
     //PASO 3
-    private By mensajeExitosoPaso3= By.xpath("//*[@id='mensajeTransaccion']/div/p/span[2]");
-    private By tituloPaso3 = By.xpath("//*[@id='subTitulo']");
-    private By paso3De3 = By.xpath("//*[@id='subTitulo']/span");
+    private final By mensajeExitosoPaso3= By.xpath("//*[@id='mensajeTransaccion']/div/p/span[2]");
+    private final By tituloPaso3 = By.xpath("//*[@id='subTitulo']");
+    private final By paso3De3 = By.xpath("//*[@id='subTitulo']/span");
 
-    private By numeroReferenciaPaso3= By.xpath("//*[@id='operacion']/div[3]/div[1]/p[2]");
-    private By numeroOperacionPaso3 = By.xpath("//*[@id='operacion']/div[3]/div[2]/p[2]");
-    private By fechaPresentacionPaso3 = By.xpath("//*[@id='fechapresentacion']");
+    private final By numeroReferenciaPaso3= By.xpath("//*[@id='operacion']/div[3]/div[1]/p[2]");
+    private final By numeroOperacionPaso3 = By.xpath("//*[@id='operacion']/div[3]/div[2]/p[2]");
+    private final By fechaPresentacionPaso3 = By.xpath("//*[@id='fechapresentacion']");
 
     //locatos cuenta sin fondo
-    private By numeroReferencia_Paso3= By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[1]/p[2]");
-    private By numeroOperacion_Paso3= By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[2]/p[2]");
-    private By fechaPresentacion_Paso3= By.xpath("//*[@id='fechapresentacion']");
+    private final By numeroReferencia_Paso3= By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[1]/p[2]");
+    private final By numeroOperacion_Paso3= By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[2]/p[2]");
+    private final By fechaPresentacion_Paso3= By.xpath("//*[@id='fechapresentacion']");
 
-    private By cuentaCanceladaEnceroPaso3 = By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[4]/p");
+    private final By cuentaCanceladaEnceroPaso3 = By.xpath("//*[@id='idDatosConfirmacionCancelacion']/div[4]/p");
     //
 
     //Datos de cancelación
-    private By cuentaCanceladaPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[1]/p");
-    private By importedocumentoPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[2]/p");
-    private By interesCalculadoAlaTasaVigentePositivoPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[3]/p");
-    private By interesXcancelacionAntesDePlazoPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[4]/p");
-    private By interesCalculadoAlaTasaVigenteNegativoPaso3 = By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[1]/p");
-    private By montoCancelacionPaso3 = By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[2]/p");
-    private By itfPaso3 = By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[3]/p");
+    private final By cuentaCanceladaPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[1]/p");
+    private final By importedocumentoPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[2]/p");
+    private final By interesCalculadoAlaTasaVigentePositivoPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[3]/p");
+    private final By interesXcancelacionAntesDePlazoPaso3 = By.xpath("//*[@id='idDatosCancelacionFirstLine']/div[4]/p");
+    private final By interesCalculadoAlaTasaVigenteNegativoPaso3 = By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[1]/p");
+    private final By montoCancelacionPaso3 = By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[2]/p");
+    private final By itfPaso3 = By.xpath("//*[@id='idDatosCancelacionSecondLine']/div[3]/p");
     //Datos del abono
-    private By cuentaDestinoPaso3 = By.xpath("//*[@id='idDatosAbonoFirstLine']/div/p");
-    private By montotransferidoPaso3 = By.xpath("//*[@id='idDatosAbonoFirstLine']/span/p");
-    private By montoTransferidoMultimonedaPaso3= By.xpath("//*[@id='idDatosAbonoFirstLine']/span[3]/p");
+    private final By cuentaDestinoPaso3 = By.xpath("//*[@id='idDatosAbonoFirstLine']/div/p");
+    private final By montotransferidoPaso3 = By.xpath("//*[@id='idDatosAbonoFirstLine']/span/p");
+    private final By montoTransferidoMultimonedaPaso3= By.xpath("//*[@id='idDatosAbonoFirstLine']/span[3]/p");
 
-    private By etiquetatipoCambio = By.xpath("//*[@id='idDatosAbonoFirstLine']/span[1]/label");
-    private By tipoDeCambio = By.xpath("//*[@id='idDatosAbonoFirstLine']/span[1]/p");
-    private By montoEquivalente= By.xpath("//*[@id='idDatosAbonoFirstLine']/span[2]/p");
+    private final By etiquetatipoCambio = By.xpath("//*[@id='idDatosAbonoFirstLine']/span[1]/label");
+    private final By tipoDeCambio = By.xpath("//*[@id='idDatosAbonoFirstLine']/span[1]/p");
+    private final By montoEquivalente= By.xpath("//*[@id='idDatosAbonoFirstLine']/span[2]/p");
 
     //Datos a validar en el paso 2
-    private String cuentaACancelarObtenido_Paso2;
-    private String cuentaACancelarObtenidoPaso2;
-    private String importeDeDocumentoObtenidoPaso2;
-    private String interesPositivoObtenidoPaso2;
-    private String toolTipObtenidoPaso2;
-    private String interesNegativoObtenidoPaso2;
-    private String interesXcancelacionAntesDePlazoObtenidoPaso2;
-    private String montoDeCancelacionObtenidoPaso2;
-    private String itfobtenidoPaso2;
-    private String cuentaDestinoObtenidoPaso2;
-    private String montoAtransferirObtenidoPaso2;
-    private String tipoDeCambioObtenidoPaso2;
-    private String montoEquivalenteObtenidoPaso2;
-    private String montoAtransferirmultimonedaObtenidoPaso2;
+    String cuentaACancelarObtenido_Paso2;
+    String cuentaACancelarObtenidoPaso2;
+    String importeDeDocumentoObtenidoPaso2;
+    String interesPositivoObtenidoPaso2;
+    String toolTipObtenidoPaso2;
+    String interesNegativoObtenidoPaso2;
+    String interesXcancelacionAntesDePlazoObtenidoPaso2;
+    String montoDeCancelacionObtenidoPaso2;
+    String itfobtenidoPaso2;
+    String cuentaDestinoObtenidoPaso2;
+    String montoAtransferirObtenidoPaso2;
+    String tipoDeCambioObtenidoPaso2;
+    String montoEquivalenteObtenidoPaso2;
+    String montoAtransferirmultimonedaObtenidoPaso2;
 
-    private String numeroReferenciaObtenidoPaso3;
-    private String numeroOperacionObtenidoPaso3;
-    private String fechaDePresentacionObtenidoPaso3;
-    private String tipoDeCambioObtenidoPaso3;
-    private String montoEquivalenteObtenidoPaso3;
-    private String montoAtransferirmultimonedaObtenidoPaso3;
-
-
-    private String cuentaSeleccionadaPaso1;
+    String numeroReferenciaObtenidoPaso3;
+    String numeroOperacionObtenidoPaso3;
+    String fechaDePresentacionObtenidoPaso3;
+    String tipoDeCambioObtenidoPaso3;
+    String montoEquivalenteObtenidoPaso3;
+    String montoAtransferirmultimonedaObtenidoPaso3;
 
 
-    private String cuentaACancelarEnCeroObtenidoPaso2;
-    private String cuentaCanceladaEnCeroObtenidoPaso3;
+    String cuentaSeleccionadaPaso1;
+
+
+    String cuentaACancelarEnCeroObtenidoPaso2;
+    String cuentaCanceladaEnCeroObtenidoPaso3;
 
     String monedaSoles= "S/";
     String monedaDolares= "US$";
 
-    private By modalEnviarConstancia = By.xpath("//*[@id='enviarDEU01']/div/div");
-    private By seleccionarEnviarConstancia= By.xpath("//*[@id='j_idt158']");
-    private By tituloModalEnviarConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[1]/h5");
-    private By subTituloModalEnviarConstancia= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[1]/span");
-    private By emailPara =  By.xpath("//*[@id='txtEmailPara']");
-    private By emailasunto =  By.xpath("//*[@id='txtEmailAsunto']");
-    private By constanciaNumeroDeReferencia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[1]/span[2]");
+    private final By seleccionarEnviarConstancia= By.xpath("//*[@id='j_idt158']");
+    private final By constanciaNumeroDeReferencia = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[1]/span[2]");
 
-    private By constanciaNumeroDeOperacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[2]/span[2]");
-    private By constanciaFechaDePresentacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[3]/span[2]");
-    private By constanciaCuentaCancelada = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[1]/span");
-    private By constanciaImporteDeDocumento = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[2]/span[2]");
-    private By constanciaInteresCalculadoAlaTasaVigentePositivo = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[3]/span[2]");
-    private By constanciaInteresPorCancelacionAntesDePlazo = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[1]/span[2]");
-    private By constanciaInteresCalculadoAlaTasaVigenteNegativo = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[2]/span[2]");
-    private By constanciaMontoDeCancelacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[3]/span[2]");
-    private By constanciaITF= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[3]/td/span[2]");
-    private By constanciaCuentaDestino= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[1]/span[2]");
-    private By constanciaMontoTransferido= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[2]/span");
-    private By constanciaBotonEnviar = By.xpath("//*[@id='j_idt293']");
-    private By constanciaEtiquetaTipoCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[2]/span[1]");
-    private By constanciaTipoDeCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[2]/span[2]");
-    private By constanciaMontoEquivalente= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[3]/span[2]");
-    private By constanciaMontoTransferidoMultimoneda= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[2]/td/span");
+    private final By constanciaNumeroDeOperacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[2]/span[2]");
+    private final By constanciaFechaDePresentacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[1]/tbody/tr/td[3]/span[2]");
+    private final By constanciaCuentaCancelada = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[1]/span");
+    private final By constanciaImporteDeDocumento = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[2]/span[2]");
+    private final By constanciaInteresCalculadoAlaTasaVigentePositivo = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[1]/td[3]/span[2]");
+    private final By constanciaInteresPorCancelacionAntesDePlazo = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[1]/span[2]");
+    private final By constanciaInteresCalculadoAlaTasaVigenteNegativo = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[2]/span[2]");
+    private final By constanciaMontoDeCancelacion = By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[2]/td[3]/span[2]");
+    private final By constanciaITF= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[2]/tbody/tr[3]/td/span[2]");
+    private final By constanciaCuentaDestino= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[1]/span[2]");
+    private final By constanciaMontoTransferido= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr/td[2]/span");
+    private final By constanciaEtiquetaTipoCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[2]/span[1]");
+    private final By constanciaTipoDeCambio= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[2]/span[2]");
+    private final By constanciaMontoEquivalente= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[1]/td[3]/span[2]");
+    private final By constanciaMontoTransferidoMultimoneda= By.xpath("//*[@id='enviarDEU01']/div/div/div[2]/div[3]/div/table[3]/tbody/tr[2]/td/span");
 
 
-
-    private By botonImprimir = By.xpath("//*[@id='printImage']");
-    private By menuConsultas= By.xpath("//*[@id='j_idt74:0:j_idt76']");
-    private By saldosYmovimientos= By.xpath("//*[@id='j_idt74:0:j_idt81:0:j_idt83']");
-    private By pdf= By.id("pdf-viewer");
-    private By tablaCuentas= By.xpath("//div[@id='DataTables_Table_1_wrapper']//tbody//tr[@class='odd']/td[@data-label='Nº cuenta']//p");
-    private By accesoDirectoCancelarCuenta= By.xpath("//*[@id='botonNext']");
+    private final By menuConsultas= By.xpath("//*[@id='j_idt74:0:j_idt76']");
+    private final By saldosYmovimientos= By.xpath("//*[@id='j_idt74:0:j_idt81:0:j_idt83']");
+    private final By accesoDirectoCancelarCuenta= By.xpath("//*[@id='botonNext']");
 
 
-    public void ingresarACancelacionDePlazoFijoDesdeMenu() {
-        WebElement selecionarMenuOperaciones = driver.findElement(menuOperaciones);
-        selecionarMenuOperaciones.click();
-
-        Actions action = new Actions(driver);
-        WebElement seleccionarSubMenuPlazofijo = driver.findElement(subMenuPlazoFijo);
-        action.moveToElement(seleccionarSubMenuPlazofijo).build().perform();
-
-        WebDriverWait wait = new WebDriverWait(driver,6000);
-        wait.until(ExpectedConditions.elementToBeClickable(conAbonoCuentaPropia));
-
-        Actions action2 = new Actions(driver);
-        WebElement ingresarAcancelacionAbonoACuentaPropia = driver.findElement(conAbonoCuentaPropia);
-        action2.moveToElement(ingresarAcancelacionAbonoACuentaPropia).perform();
-        ingresarAcancelacionAbonoACuentaPropia.click();
-    }
     public void ingresarACancelacionDePlazoFijoDesdeAccesoDirecto(String cuentaSeleccionada){
         cuentaSeleccionadaPaso1= cuentaSeleccionada;
         Actions action = new Actions(driver);
@@ -191,7 +158,7 @@ public class cancelacionDePlazoFijo {
         WebDriverWait wait = new WebDriverWait (driver,5);
         wait.until(ExpectedConditions.presenceOfElementLocated(etiquetaPazoFijo));
 
-        By filaCuenta = By.xpath("//tr[@class='odd']/td[@data-label='Nº cuenta']//p[contains(text(),'"+cuentaSeleccionada+"')]/../../../td[@data-label='Detalle']//a");
+        By filaCuenta = By.xpath("//tr[@role='row']/td[@data-label='Nº cuenta']/div/p[contains(text(),'"+cuentaSeleccionada+"')]/../../../td[@data-label='Detalle']/div/a");
 
         Actions seleccionarFila = new Actions(driver);
         WebElement Cuenta= driver.findElement(filaCuenta);
@@ -577,16 +544,7 @@ public class cancelacionDePlazoFijo {
 
 
     }
-    public void funcionEnviarConstancia(String correo, String asunto){
-        WebElement seleccionarEmailPara= driver.findElement(emailPara);
-        seleccionarEmailPara.sendKeys(correo);
 
-        WebElement seleccionarEmailAsunto= driver.findElement(emailasunto);
-        seleccionarEmailAsunto.sendKeys(asunto);
-
-        WebElement seleccionarBotonEnviar= driver.findElement(By.xpath("*//a[contains(text(),'ENVIAR')]"));
-        seleccionarBotonEnviar.click();
-    }
     public void validarDatosDeModalConstancia(){
         WebElement EnviarConstancia = driver.findElement(seleccionarEnviarConstancia);
         EnviarConstancia.click();
@@ -667,37 +625,16 @@ public class cancelacionDePlazoFijo {
 
             String cuentaCanceladaObtenido_Constancia= driver.findElement(cuentaCanceladaEnceroPaso3).getText();
             assertEquals(cuentaCanceladaEnCeroObtenidoPaso3,cuentaCanceladaObtenido_Constancia);
-
-
         }
-
-
     }
-    public void confirmacionDeEnvioDeConstancia(){
 
-        String tituloConfirmacionObtenido = driver.findElement(By.xpath("//form[@id='j_idt72']//div[@id='dlgConfirmacion']/div[2]/h2")).getText();
-        String tituloConfirmacionEsperado= "CONFIRMACIÓN";
-        assertEquals(tituloConfirmacionEsperado,tituloConfirmacionObtenido);
-
-        String mensajeConfirmacionObtenido = driver.findElement(By.xpath("//*[@id='j_idt128']")).getText();
-        String mensajeConfirmacionEsperado= "La constancia fue enviada con éxito";
-        assertEquals(mensajeConfirmacionEsperado,mensajeConfirmacionObtenido);
-
-        String botonAceptarObtenido = driver.findElement(By.xpath("//*[@id='dlgConfirmacion']/div[2]/input")).getAttribute("value");
-        String botonAceptarEsperado= "Aceptar";
-        assertEquals(botonAceptarEsperado,botonAceptarObtenido);
-
-        WebElement botonAceptar= driver.findElement(By.xpath("//*[@id='dlgConfirmacion']/div[2]/input"));
-        botonAceptar.click();
-
-    }
     public void cancelarCuentaPlazoFijoconEnCero(){
         //Paso2
         //Cuenta a cancelar
         cuentaACancelarObtenido_Paso2= driver.findElement(cuentaAcancelarEnceroPaso2).getText();
         String parte1CuentaAcancelar= cuentaACancelarObtenido_Paso2.substring(7,10);
-        String parte2CuentaAcancelar = cuentaACancelarObtenido_Paso2.substring(11,13);;
-        String parte3CuentaAcancelar = cuentaACancelarObtenido_Paso2.substring(14,21);;
+        String parte2CuentaAcancelar = cuentaACancelarObtenido_Paso2.substring(11,13);
+        String parte3CuentaAcancelar = cuentaACancelarObtenido_Paso2.substring(14,21);
         String cuentaACancelarEsperadaPaso2 = parte1CuentaAcancelar+"-"+parte2CuentaAcancelar+"-"+parte3CuentaAcancelar;
         assertEquals(cuentaSeleccionadaPaso1, cuentaACancelarEsperadaPaso2);
         System.out.println("Cuenta a cancelar ok en paso 2");
@@ -719,8 +656,5 @@ public class cancelacionDePlazoFijo {
         assertEquals(cuentaACancelarObtenido_Paso2, cuentaCanceladaEnCeroObtenidoPaso3);
         System.out.println("Cuenta a cancelar ok en paso 3");
     }
-
-
-
 
 }

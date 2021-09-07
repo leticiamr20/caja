@@ -1,12 +1,10 @@
-package testsIBK.Persona.TestPlazoFijo.incrementoDePlazoFijoTest;
+package testsIBK.Persona.PlazoFijo.incrementoDePlazoFijoTest;
 
 import common.BaseDriver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import pageObjects.incrementoDePlazoFijo;
 import util.Utilities;
 
@@ -22,7 +20,7 @@ public class incrementoDePlazoFijoTest extends BaseDriver {
     @Before
     public void metodosBefore(){
         utilities.loginPersonaIBK_usuario1("4", "16466306");
-        incrementoDePlazoFijo.ingresarAincrementoDePlazoFijoDesdeMenu();
+        utilities.ingresarAMenu("OPERACIONES","Plazo Fijo","Incremento de plazo fijo");
         incrementoDePlazoFijo.validarFormularioDeSeleccionOperacion();
 
     }
@@ -34,7 +32,7 @@ public class incrementoDePlazoFijoTest extends BaseDriver {
         incrementoDePlazoFijo.paso2();
         incrementoDePlazoFijo.paso3();
         incrementoDePlazoFijo.validarDatosDeEnvio();
-        utilities.enviarConstancia("leticia.moreno@encora.com", "test");
+        utilities.enviarConstancia("leticia.moreno@encora.com", "incrementoACuentaSinFondoCon3PasosSolesASoles");
         utilities.validarConformidadDeEnvio();
     }
 
@@ -45,7 +43,7 @@ public class incrementoDePlazoFijoTest extends BaseDriver {
         incrementoDePlazoFijo.paso2();
         incrementoDePlazoFijo.paso3();
         incrementoDePlazoFijo.validarDatosDeEnvio();
-        utilities.enviarConstancia("leticia.moreno@encora.com", "test");
+        utilities.enviarConstancia("leticia.moreno@encora.com", "incrementoACuentaSinFondoCon3PasosDolaresAsoles");
         utilities.validarConformidadDeEnvio();
     }
 
@@ -56,7 +54,7 @@ public class incrementoDePlazoFijoTest extends BaseDriver {
         incrementoDePlazoFijo.paso2();
         incrementoDePlazoFijo.paso3();
         incrementoDePlazoFijo.validarDatosDeEnvio();
-        utilities.enviarConstancia("leticia.moreno@encora.com", "test");
+        utilities.enviarConstancia("leticia.moreno@encora.com", "incrementoACuentaConFondoCon3PasosSolesAdolares");
         utilities.validarConformidadDeEnvio();
 
     }
@@ -68,7 +66,7 @@ public class incrementoDePlazoFijoTest extends BaseDriver {
         incrementoDePlazoFijo.paso2();
         incrementoDePlazoFijo.paso3();
         incrementoDePlazoFijo.validarDatosDeEnvio();
-        utilities.enviarConstancia("leticia.moreno@encora.com", "test");
+        utilities.enviarConstancia("leticia.moreno@encora.com", "incrementoACuentaConFondoCon3PasosDolaresASoles");
         utilities.validarConformidadDeEnvio();
     }
 

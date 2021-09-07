@@ -1,4 +1,4 @@
-package testsIBK.Persona.TestPlazoFijo.AperturaDePlazoFijo;
+package testsIBK.Persona.PlazoFijo.AperturaDePlazoFijo;
 
 import common.BaseDriver;
 import org.junit.After;
@@ -21,7 +21,7 @@ public class aperturaDePlazoFijoTest extends BaseDriver {
     @Before
     public void metodosBefore(){
         utilities.loginPersonaIBK_usuario1("4", "16466306");
-        aperturaDePlazoFijo.ingresarAaperturaDePlazoFijoDesdeMenu();
+        utilities.ingresarAMenu("OPERACIONES","Plazo Fijo","Apertura de plazo fijo");
     }
     @Test
     public void aperturaDePlazoFijoConModalidadDisponibleEnCuenta (){
